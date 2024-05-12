@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://mfdy3drsusv8"]
+
+[ext_resource type="PackedScene" uid="uid://cpj0chygewk4r" path="res://Game/Buildint Point/building_point.tscn" id="1_ta1yc"]
+[ext_resource type="Script" path="res://Game/Buildint Point/House Point/house_point.gd" id="2_d34g4"]
+[ext_resource type="Texture2D" uid="uid://bo2l6w45bwo0u" path="res://Assets/Sprites/Factions/Knights/Buildings/House/House_Construction.png" id="3_fm0jo"]
+[ext_resource type="PackedScene" uid="uid://ixwntkjf0xhf" path="res://Game/Buildint Point/House Point/build_popup_house.tscn" id="3_i1k7s"]
+[ext_resource type="Resource" uid="uid://lai0x5mkn2ka" path="res://Data/Active Objects/Buildables/house_data.tres" id="4_ed01k"]
+
+[node name="HousePoint" instance=ExtResource("1_ta1yc")]
+script = ExtResource("2_d34g4")
+build_popup_scene = ExtResource("3_i1k7s")
+building_data = ExtResource("4_ed01k")
+
+[node name="ClickSide" parent="." index="0"]
+position = Vector2(0, 39)
+
+[node name="BuildSide" parent="." index="1"]
+texture = ExtResource("3_fm0jo")
+
+[node name="BuildInProgress" parent="." index="2"]
+position = Vector2(0, -40)
+
+[node name="ProgressBar" parent="." index="4"]
+visible = false
+
+[editable path="BuildInProgress"]

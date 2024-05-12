@@ -1,0 +1,296 @@
+[gd_scene load_steps=16 format=3 uid="uid://uw3xpi1g3bb6"]
+
+[ext_resource type="Script" path="res://Game/Zones/Gold Mine/gold_mine.gd" id="1_xeo1d"]
+[ext_resource type="PackedScene" uid="uid://c8q8vowf8b22g" path="res://Components/Health Component/health_component.tscn" id="2_qml4t"]
+[ext_resource type="PackedScene" uid="uid://cg764h2ff8si" path="res://Components/Hurtbox Component/hurtbox.tscn" id="3_75an5"]
+[ext_resource type="Texture2D" uid="uid://cq3vl182fcw1d" path="res://Assets/Sprites/Resources/Gold Mine/GoldMine_Destroyed.png" id="4_0uln0"]
+[ext_resource type="Texture2D" uid="uid://cq63tfte0d21v" path="res://Assets/Sprites/Resources/Gold Mine/GoldMine_Inactive.png" id="5_hr32f"]
+[ext_resource type="Texture2D" uid="uid://bncdbb3e5ooic" path="res://Assets/Sprites/Resources/Gold Mine/GoldMine_Active.png" id="6_s2bwg"]
+[ext_resource type="Texture2D" uid="uid://d31d3ll56yx8g" path="res://Assets/Sprites/Effects/gold_mine_light.png" id="7_fouau"]
+[ext_resource type="AnimationLibrary" uid="uid://cr4jjs5dfb3sc" path="res://Game/Zones/Gold Mine/goldmine.res" id="8_dm2so"]
+[ext_resource type="Texture2D" uid="uid://6b4fsuyeqp8d" path="res://Assets/Sprites/Effects/smoke_round.png" id="9_73y6o"]
+[ext_resource type="Texture2D" uid="uid://cg30b1pvocjlo" path="res://Assets/Sprites/Effects/Fire/Fire.png" id="10_eyt8c"]
+[ext_resource type="Texture2D" uid="uid://cbypjwiw6piy7" path="res://Assets/Sprites/Effects/Explosion/Explosions.png" id="11_nfo8i"]
+[ext_resource type="Script" path="res://Components/attack_point.gd" id="12_wf52v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkf4v"]
+size = Vector2(188, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evi74"]
+size = Vector2(150, 114)
+
+[sub_resource type="Gradient" id="Gradient_xyoau"]
+colors = PackedColorArray(0.446777, 0.446777, 0.446777, 1, 1, 1, 1, 0)
+
+[node name="GoldMine" type="Area2D" groups=["Knights"]]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_xeo1d")
+income_per_worker = 4
+available_workers_slots = 10
+enemy_group_name = "goblins"
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("2_qml4t")]
+max_hp = 600.0
+agent = NodePath("..")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("agent", "health_component") instance=ExtResource("3_75an5")]
+collision_layer = 0
+collision_mask = 16
+agent = NodePath("..")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-3, -3)
+shape = SubResource("RectangleShape2D_fkf4v")
+debug_color = Color(0.631373, 0.52549, 0.176471, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_evi74")
+
+[node name="MainSprites" type="Node2D" parent="."]
+
+[node name="Destroyed" type="Sprite2D" parent="MainSprites"]
+visible = false
+texture = ExtResource("4_0uln0")
+
+[node name="Inactive" type="Sprite2D" parent="MainSprites"]
+visible = false
+texture = ExtResource("5_hr32f")
+
+[node name="Active" type="Sprite2D" parent="MainSprites"]
+texture = ExtResource("6_s2bwg")
+
+[node name="AnimNodes" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimNodes"]
+position = Vector2(1, 20)
+color = Color(0.913725, 0.941176, 0.266667, 1)
+energy = 0.27
+texture = ExtResource("7_fouau")
+texture_scale = 1.06
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimNodes"]
+libraries = {
+"": ExtResource("8_dm2so")
+}
+
+[node name="LowDamage" type="Node2D" parent="AnimNodes"]
+visible = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimNodes/LowDamage"]
+position = Vector2(-67, 13)
+amount = 50
+texture = ExtResource("9_73y6o")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimNodes/LowDamage"]
+z_index = -1
+position = Vector2(-18, -47)
+amount = 50
+texture = ExtResource("9_73y6o")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="AnimNodes/LowDamage"]
+position = Vector2(67, 13)
+amount = 50
+texture = ExtResource("9_73y6o")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -100)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="MidDamage" type="Node2D" parent="AnimNodes"]
+visible = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimNodes/MidDamage"]
+position = Vector2(-65, 27)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="AnimNodes/MidDamage"]
+position = Vector2(-11, -5)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="AnimNodes/MidDamage"]
+position = Vector2(55, 31)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimNodes/MidDamage"]
+z_index = -2
+position = Vector2(44, -34)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="Fire" type="Sprite2D" parent="AnimNodes/MidDamage"]
+position = Vector2(-36, 24)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("10_eyt8c")
+hframes = 7
+frame = 3
+
+[node name="Fire2" type="Sprite2D" parent="AnimNodes/MidDamage"]
+z_index = -1
+position = Vector2(43, -47)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("10_eyt8c")
+hframes = 7
+frame = 2
+
+[node name="HighDamage" type="Node2D" parent="AnimNodes"]
+visible = false
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="AnimNodes/HighDamage"]
+position = Vector2(-65, 27)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="AnimNodes/HighDamage"]
+position = Vector2(55, 31)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="CPUParticles2D8" type="CPUParticles2D" parent="AnimNodes/HighDamage"]
+z_index = -2
+position = Vector2(44, -34)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="Fire" type="Sprite2D" parent="AnimNodes/HighDamage"]
+position = Vector2(-40, 3)
+scale = Vector2(0.757813, 0.726563)
+texture = ExtResource("10_eyt8c")
+hframes = 7
+frame = 2
+
+[node name="Fire2" type="Sprite2D" parent="AnimNodes/HighDamage"]
+z_index = -1
+position = Vector2(48, -54)
+texture = ExtResource("10_eyt8c")
+hframes = 7
+frame = 3
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="AnimNodes/HighDamage"]
+position = Vector2(-5, -4)
+amount = 100
+lifetime = 0.8
+texture = ExtResource("9_73y6o")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+gravity = Vector2(0, -200)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_xyoau")
+
+[node name="Destroy" type="Node2D" parent="AnimNodes"]
+position = Vector2(-1, 19)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimNodes/Destroy"]
+visible = false
+position = Vector2(7.62939e-06, -14)
+scale = Vector2(1.51563, 1.51563)
+texture = ExtResource("11_nfo8i")
+hframes = 9
+frame = 8
+
+[node name="AttackPoints" type="Node2D" parent="."]
+
+[node name="Point01" type="Marker2D" parent="AttackPoints"]
+position = Vector2(-69, -82)
+script = ExtResource("12_wf52v")
+
+[node name="Point02" type="Marker2D" parent="AttackPoints"]
+position = Vector2(-4, -92)
+script = ExtResource("12_wf52v")
+
+[node name="Point03" type="Marker2D" parent="AttackPoints"]
+position = Vector2(70, -88)
+script = ExtResource("12_wf52v")
+
+[node name="Point04" type="Marker2D" parent="AttackPoints"]
+position = Vector2(112, -52)
+script = ExtResource("12_wf52v")
+
+[node name="Point05" type="Marker2D" parent="AttackPoints"]
+position = Vector2(114, 1)
+script = ExtResource("12_wf52v")
+
+[node name="Point06" type="Marker2D" parent="AttackPoints"]
+position = Vector2(110, 51)
+script = ExtResource("12_wf52v")
+
+[node name="Point07" type="Marker2D" parent="AttackPoints"]
+position = Vector2(-122, -51)
+script = ExtResource("12_wf52v")
+
+[node name="Point08" type="Marker2D" parent="AttackPoints"]
+position = Vector2(-128, -3)
+script = ExtResource("12_wf52v")
+
+[node name="Point09" type="Marker2D" parent="AttackPoints"]
+position = Vector2(-122, 46)
+script = ExtResource("12_wf52v")

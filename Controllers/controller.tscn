@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cefptserynhh7"]
+
+[ext_resource type="Script" path="res://Components/Spawn Component/spawn_component.gd" id="1_dfcr5"]
+[ext_resource type="Script" path="res://Controllers/controller.gd" id="1_e1f81"]
+[ext_resource type="PackedScene" uid="uid://pcyq4uoie15j" path="res://Game/Level/move_point.tscn" id="2_7vnna"]
+
+[node name="Controller" type="Node2D"]
+script = ExtResource("1_e1f81")
+
+[node name="SpawnComponent" type="Node" parent="."]
+script = ExtResource("1_dfcr5")
+
+[node name="Timer" type="Timer" parent="SpawnComponent"]
+one_shot = true
+
+[node name="MovePoint" parent="." instance=ExtResource("2_7vnna")]
+visible = false

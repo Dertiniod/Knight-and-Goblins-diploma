@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2bqp6tqabdso"
+path="res://.godot/imported/Blade Cut 1.wav-989c0b63164682bdef3c3a11de9b03c1.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Blade Cut 1.wav"
+dest_files=["res://.godot/imported/Blade Cut 1.wav-989c0b63164682bdef3c3a11de9b03c1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

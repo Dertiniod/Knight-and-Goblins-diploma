@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3j48kp5cfxc4"
+path="res://.godot/imported/Percussion 3.wav-2cc7d5541bcb76655bb1d389df404543.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Percussion 3.wav"
+dest_files=["res://.godot/imported/Percussion 3.wav-2cc7d5541bcb76655bb1d389df404543.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

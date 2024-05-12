@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cu6h4f2o07wih"
+path="res://.godot/imported/Magical 4.wav-4689f705c199db4136c45a48ebac2b52.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Magical 4.wav"
+dest_files=["res://.godot/imported/Magical 4.wav-4689f705c199db4136c45a48ebac2b52.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

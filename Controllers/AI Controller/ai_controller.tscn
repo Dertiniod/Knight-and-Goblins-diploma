@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76fyk7os544w"]
+
+[ext_resource type="PackedScene" uid="uid://cefptserynhh7" path="res://Controllers/controller.tscn" id="1_bg74l"]
+[ext_resource type="Script" path="res://Controllers/AI Controller/ai_controller.gd" id="2_21xat"]
+
+[node name="AIController" instance=ExtResource("1_bg74l")]
+script = ExtResource("2_21xat")
+
+[node name="MovePoint" parent="." index="1"]
+visible = true
+
+[node name="AnimatedSprite2D" parent="MovePoint" index="0"]
+visible = false
+
+[node name="AnimationPlayer" parent="MovePoint" index="1"]
+active = false
+
+[editable path="MovePoint"]

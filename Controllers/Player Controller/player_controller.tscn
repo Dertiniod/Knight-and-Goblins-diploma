@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://wrldcfo81rfa"]
+
+[ext_resource type="PackedScene" uid="uid://cefptserynhh7" path="res://Controllers/controller.tscn" id="1_a1sp5"]
+[ext_resource type="PackedScene" uid="uid://de7uggkmqml6y" path="res://Controllers/Player Controller/PlayerCamera/player_camera.tscn" id="2_8mboa"]
+[ext_resource type="Script" path="res://Controllers/Player Controller/player_controller.gd" id="2_e1fep"]
+[ext_resource type="PackedScene" uid="uid://q47j1lirlfpa" path="res://UI/ZoneMenus/castle_menu.tscn" id="3_afaq6"]
+[ext_resource type="PackedScene" uid="uid://ck8pyx0m51axe" path="res://UI/ZoneMenus/forest_menu.tscn" id="4_cpygn"]
+[ext_resource type="PackedScene" uid="uid://cl8mjefv2q4a7" path="res://UI/hud.tscn" id="5_aojga"]
+[ext_resource type="PackedScene" uid="uid://limgpo8twgio" path="res://UI/move_point_hint.tscn" id="6_ewh2y"]
+[ext_resource type="PackedScene" uid="uid://bhblluu0imxaa" path="res://UI/DropdownMenus/dropdown_menus_manager.tscn" id="7_ye463"]
+[ext_resource type="PackedScene" uid="uid://ddwupl7dthl56" path="res://UI/BottomMenus/bottom_menu_manager.tscn" id="8_asi4v"]
+
+[node name="PlayerController" node_paths=PackedStringArray("controlled_zones", "interactables", "dropdown_menus_manager") instance=ExtResource("1_a1sp5")]
+script = ExtResource("2_e1fep")
+castle_menu_scene = ExtResource("3_afaq6")
+forest_menu_scene = ExtResource("4_cpygn")
+hud_scene = ExtResource("5_aojga")
+move_point_hint_scene = ExtResource("6_ewh2y")
+controlled_zones = []
+interactables = []
+dropdown_menus_manager = NodePath("DropdownMenusManager")
+
+[node name="DropdownMenusManager" parent="." index="0" instance=ExtResource("7_ye463")]
+
+[node name="PlayerCamera" parent="." index="2" instance=ExtResource("2_8mboa")]
+unique_name_in_owner = true
+zoom = Vector2(0.6, 0.6)
+
+[node name="MovePoint" parent="." index="3"]
+visible = true
+z_index = 100
+
+[node name="BottomMenuManager" parent="." index="4" node_paths=PackedStringArray("player_controller") instance=ExtResource("8_asi4v")]
+player_controller = NodePath("..")
+
+[node name="ForestMenu" parent="BottomMenuManager" index="0"]
+visible = false
+
+[node name="Control" parent="BottomMenuManager/ForestMenu" index="0"]
+offset_top = -75.0
+offset_bottom = -75.0
+
+[node name="CastleMenu" parent="BottomMenuManager" index="1"]
+visible = false
+
+[node name="Control" parent="BottomMenuManager/CastleMenu" index="0"]
+offset_top = -75.0
+offset_bottom = -75.0
+
+[editable path="BottomMenuManager"]
+[editable path="BottomMenuManager/ForestMenu"]
+[editable path="BottomMenuManager/CastleMenu"]

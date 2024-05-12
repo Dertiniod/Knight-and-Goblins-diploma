@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WarUnitData" load_steps=2 format=3 uid="uid://biktcpmcj6bso"]
+
+[ext_resource type="Script" path="res://Data/Units/war_unit_data.gd" id="1_lfyo4"]
+
+[resource]
+script = ExtResource("1_lfyo4")
+damage = 25
+attack_speed = 1.5
+can_miss = false
+miss_chance = 0.0
+name = "goblin_warrior"
+unit_team = 1
+description = ""
+health = 100
+spawn_time = 5
+gold = 0
+food = 0
+wood = 0
+scene_path = "res://Game/Unit/Melee/Goblin/goblin.tscn"

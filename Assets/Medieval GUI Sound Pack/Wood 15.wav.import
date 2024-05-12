@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://beawu8a4kmk32"
+path="res://.godot/imported/Wood 15.wav-b4a4b14f1ad2b07f1a36b6e970f1b736.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Wood 15.wav"
+dest_files=["res://.godot/imported/Wood 15.wav-b4a4b14f1ad2b07f1a36b6e970f1b736.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

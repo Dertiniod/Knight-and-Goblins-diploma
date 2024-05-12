@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btv3p72cqaen6"
+path="res://.godot/imported/Metal Rattle 3.wav-552a8e6fe30e9b2702bfdee679b3b026.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Metal Rattle 3.wav"
+dest_files=["res://.godot/imported/Metal Rattle 3.wav-552a8e6fe30e9b2702bfdee679b3b026.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

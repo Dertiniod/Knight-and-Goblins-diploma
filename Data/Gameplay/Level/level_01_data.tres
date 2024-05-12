@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b0cpbd3x2kqwx"]
+
+[ext_resource type="Script" path="res://Data/Gameplay/Level/level_data.gd" id="1_fvlj5"]
+
+[resource]
+script = ExtResource("1_fvlj5")
+id = "1"
+level_stars = 0
+is_unlocked = true
+scene_path = "res://Game/Level/level_01.tscn"

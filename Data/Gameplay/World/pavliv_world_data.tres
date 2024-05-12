@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=3 format=3 uid="uid://6s8vqi2xw3d"]
+
+[ext_resource type="Resource" uid="uid://b0cpbd3x2kqwx" path="res://Data/Gameplay/Level/level_01_data.tres" id="1_rlfp0"]
+[ext_resource type="Script" path="res://Data/Gameplay/World/world_data.gd" id="1_ul2mo"]
+
+[resource]
+script = ExtResource("1_ul2mo")
+world_id = "pavliv"
+levels_amount = 4
+levels_info = [ExtResource("1_rlfp0"), null, null, null]

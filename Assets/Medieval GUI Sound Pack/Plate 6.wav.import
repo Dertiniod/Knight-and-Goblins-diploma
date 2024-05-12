@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cs6lrwpprmtcc"
+path="res://.godot/imported/Plate 6.wav-02aac0210294e1094f7f64c78149350a.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Plate 6.wav"
+dest_files=["res://.godot/imported/Plate 6.wav-02aac0210294e1094f7f64c78149350a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

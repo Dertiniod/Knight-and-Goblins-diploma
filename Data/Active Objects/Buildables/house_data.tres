@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HouseData" load_steps=3 format=3 uid="uid://lai0x5mkn2ka"]
+
+[ext_resource type="Script" path="res://Data/Active Objects/Buildables/house_data.gd" id="1_mpoo1"]
+[ext_resource type="PackedScene" uid="uid://dmlmcyxn3dwq0" path="res://Game/Objects/Active Objects/Placable/Knight's House/knights_house.tscn" id="1_thp4k"]
+
+[resource]
+script = ExtResource("1_mpoo1")
+food_gain = 10
+gold = 50
+food = 0
+wood = 25
+building_time = 10.0
+name = "House"
+description = ""
+object_scene = ExtResource("1_thp4k")

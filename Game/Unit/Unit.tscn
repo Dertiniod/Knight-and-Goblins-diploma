@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://co5dg8i3t3xhv"]
+
+[ext_resource type="Script" path="res://Game/Unit/unit.gd" id="1_oy6fb"]
+[ext_resource type="PackedScene" uid="uid://tg83nha0hcq0" path="res://Components/Hitbox Component/hitbox.tscn" id="2_r6q2c"]
+[ext_resource type="PackedScene" uid="uid://c8q8vowf8b22g" path="res://Components/Health Component/health_component.tscn" id="2_tisb0"]
+[ext_resource type="PackedScene" uid="uid://sxkmfdl77rxi" path="res://Components/Damage Component/damage_component.tscn" id="3_bleuf"]
+[ext_resource type="Texture2D" uid="uid://b0prycb7mtdlg" path="res://Assets/Sprites/Factions/Knights/Troops/Dead/Dead.png" id="3_cw3wj"]
+[ext_resource type="PackedScene" uid="uid://cg764h2ff8si" path="res://Components/Hurtbox Component/hurtbox.tscn" id="3_g1nxp"]
+
+[node name="Unit" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_oy6fb")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("agent") instance=ExtResource("2_tisb0")]
+agent = NodePath("..")
+
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("damage_causer") instance=ExtResource("3_bleuf")]
+damage_causer = NodePath("..")
+
+[node name="SpotArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="HitBox" parent="." node_paths=PackedStringArray("agent", "damage_component") instance=ExtResource("2_r6q2c")]
+agent = NodePath("..")
+damage_component = NodePath("../DamageComponent")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("agent", "health_component") instance=ExtResource("3_g1nxp")]
+agent = NodePath("..")
+health_component = NodePath("../HealthComponent")
+
+[node name="Dead" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_cw3wj")
+hframes = 7
+vframes = 2
+frame = 13
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 16
+path_postprocessing = 1

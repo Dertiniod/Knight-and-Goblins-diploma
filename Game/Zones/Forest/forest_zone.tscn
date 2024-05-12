@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cducbanxc2fe5"]
+
+[ext_resource type="PackedScene" uid="uid://qdpmlcyrhv0" path="res://Game/Zones/zone.tscn" id="1_l6u0s"]
+[ext_resource type="Script" path="res://Game/Zones/Forest/forest_zone.gd" id="2_8fliq"]
+[ext_resource type="PackedScene" uid="uid://dwtedco8w8ljp" path="res://Game/Zones/Forest/cutting_tree.tscn" id="3_qrsqv"]
+
+[node name="ForestZone" instance=ExtResource("1_l6u0s")]
+script = ExtResource("2_8fliq")
+
+[node name="Trees" type="Node2D" parent="." index="1"]
+
+[node name="CuttingTree" parent="." index="2" instance=ExtResource("3_qrsqv")]
+z_index = 100
+
+[node name="AnimationPlayer" parent="CuttingTree" index="1"]
+autoplay = ""
+
+[editable path="CuttingTree"]

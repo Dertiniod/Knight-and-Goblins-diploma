@@ -1,0 +1,31 @@
+[gd_resource type="BehaviorTree" load_steps=9 format=3 uid="uid://dppbtm00t6h5"]
+
+[ext_resource type="BlackboardPlan" uid="uid://x5yy26r5lwee" path="res://Game/Unit/Behavior Tree/BB_unit.tres" id="1_0k836"]
+[ext_resource type="Script" path="res://ai/tasks/can_attack.gd" id="6_b6h2d"]
+
+[sub_resource type="BTCondition" id="BTCondition_p74hl"]
+script = ExtResource("6_b6h2d")
+target_var = "target"
+
+[sub_resource type="BBNode" id="BBNode_epfrm"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_4oott"]
+node = SubResource("BBNode_epfrm")
+method = &"attack"
+
+[sub_resource type="BTCooldown" id="BTCooldown_27qvn"]
+duration = 2.0
+children = [SubResource("BTCallMethod_4oott")]
+
+[sub_resource type="BTSequence" id="BTSequence_f5lxs"]
+custom_name = "Attack"
+children = [SubResource("BTCondition_p74hl"), SubResource("BTCooldown_27qvn")]
+
+[sub_resource type="BTSelector" id="BTSelector_ubfv1"]
+children = [SubResource("BTSequence_f5lxs")]
+
+[resource]
+blackboard_plan = ExtResource("1_0k836")
+root_task = SubResource("BTSelector_ubfv1")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7i58whoyuv26"]
+
+[ext_resource type="Script" path="res://Globals/global_data.gd" id="1_u8m1t"]
+[ext_resource type="Resource" uid="uid://biktcpmcj6bso" path="res://Data/Units/goblin_data.tres" id="2_h5do1"]
+[ext_resource type="Resource" uid="uid://o5wj25s0hk5a" path="res://Data/Units/knight_data.tres" id="3_aapd2"]
+[ext_resource type="Resource" uid="uid://wdk7177upcny" path="res://Data/Units/archer_data.tres" id="3_gd5h0"]
+
+[node name="GlobalData" type="Node"]
+script = ExtResource("1_u8m1t")
+goblins_data = Array[Resource("res://Data/Units/units_data.gd")]([ExtResource("2_h5do1")])
+knights_data = Array[Resource("res://Data/Units/units_data.gd")]([ExtResource("3_aapd2"), ExtResource("3_gd5h0")])

@@ -1,0 +1,44 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=9 format=3 uid="uid://bwabd1d1xm16b"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3oq2r"]
+animation = &"attack_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_42uas"]
+animation = &"attack_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_acvgi"]
+animation = &"attack_down_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rdbeb"]
+animation = &"attack_down_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iw8l2"]
+animation = &"attack_up_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eiigj"]
+animation = &"attack_up_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_82tvn"]
+animation = &"attack_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xx606"]
+animation = &"attack_side"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3oq2r")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_42uas")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_acvgi")
+blend_point_2/pos = Vector2(1, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_rdbeb")
+blend_point_3/pos = Vector2(-1, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_iw8l2")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_eiigj")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_82tvn")
+blend_point_6/pos = Vector2(1, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_xx606")
+blend_point_7/pos = Vector2(-1, 0)
+blend_mode = 1

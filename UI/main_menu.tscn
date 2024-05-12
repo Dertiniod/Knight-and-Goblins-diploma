@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5v5uynonheq2"]
+
+[ext_resource type="PackedScene" uid="uid://dy1qfli7mmn6g" path="res://Game/Worlds/pavliv.tscn" id="1_csxvc"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_kqsyp"]
+[ext_resource type="Texture2D" uid="uid://sstc80c3gcl5" path="res://Assets/Sprites/UI/Banners/full_screen.png" id="1_ovouh"]
+[ext_resource type="Resource" uid="uid://6s8vqi2xw3d" path="res://Data/Gameplay/World/pavliv_world_data.tres" id="2_www6m"]
+[ext_resource type="Texture2D" uid="uid://dxufggol2ngxw" path="res://Assets/Sprites/UI/Banners/Banner_Connection_Right.png" id="3_kp0wx"]
+[ext_resource type="Texture2D" uid="uid://c8ptwtbpoxf2m" path="res://Assets/Sprites/UI/Buttons/Red_96.png" id="7_loks2"]
+[ext_resource type="Texture2D" uid="uid://cqs6hr352wd5c" path="res://Assets/Sprites/UI/Buttons/Red_96_pressed.png" id="8_n05rv"]
+[ext_resource type="Texture2D" uid="uid://d1ty84osvuqq5" path="res://Assets/Sprites/UI/Icons/Regular_01.png" id="9_4sfir"]
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_kqsyp")
+
+[node name="Pavliv" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("1_csxvc")]
+world_data = ExtResource("2_www6m")
+menu = NodePath("..")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -843.0
+offset_top = 22.0
+offset_right = 98.0
+offset_bottom = 963.0
+texture = ExtResource("1_ovouh")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.07
+anchor_right = 1.05
+offset_left = -192.0
+offset_top = 3.87
+offset_right = -0.0499268
+offset_bottom = 158.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+size_flags_stretch_ratio = 20.0
+texture = ExtResource("3_kp0wx")
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -51.0
+offset_right = 70.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Knights and Goblins"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.869
+anchor_right = 0.984
+anchor_bottom = 1.0
+offset_left = -33.729
+offset_top = -69.0
+offset_right = 59.056
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_loks2")
+texture_pressed = ExtResource("8_n05rv")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer/ExitButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 80.0
+offset_bottom = 75.0
+texture = ExtResource("9_4sfir")

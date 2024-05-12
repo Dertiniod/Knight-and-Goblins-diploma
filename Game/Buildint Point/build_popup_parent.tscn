@@ -1,0 +1,316 @@
+[gd_scene load_steps=21 format=3 uid="uid://bvmmm8p7fenx8"]
+
+[ext_resource type="Script" path="res://Game/Buildint Point/build_popup_parent.gd" id="1_n6fbb"]
+[ext_resource type="Texture2D" uid="uid://d5hxptunvirs" path="res://Assets/Sprites/UI/Banners/1 (3).png" id="2_1ytb8"]
+[ext_resource type="FontFile" uid="uid://bsni7gjba8ctr" path="res://Assets/Welbut__.ttf" id="3_2w8yi"]
+[ext_resource type="Texture2D" uid="uid://c6ii4nh7t2475" path="res://Assets/Sprites/UI/Buttons/Button_Red.png" id="4_3ijvq"]
+[ext_resource type="Texture2D" uid="uid://c5pb628vnrrin" path="res://Assets/Sprites/UI/Buttons/Button_Red_Pressed.png" id="5_54i76"]
+[ext_resource type="Texture2D" uid="uid://d1ty84osvuqq5" path="res://Assets/Sprites/UI/Icons/Regular_01.png" id="6_qwqbx"]
+[ext_resource type="Texture2D" uid="uid://drqlurpc60rme" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides.png" id="7_5o5h0"]
+[ext_resource type="Texture2D" uid="uid://cfjd6gtrjovbc" path="res://Assets/Sprites/Resources/Resources/G_Icon.png" id="7_p1kd4"]
+[ext_resource type="Texture2D" uid="uid://cwnjyc35qwpsr" path="res://Assets/Sprites/UI/Icons/Tower_Icon.png" id="7_r1n46"]
+[ext_resource type="Texture2D" uid="uid://bt08k7oxbnx1f" path="res://Assets/Sprites/Resources/Resources/W_Icon.png" id="8_43vya"]
+[ext_resource type="Texture2D" uid="uid://brg76ir3b6e7u" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="8_xmi4v"]
+[ext_resource type="Texture2D" uid="uid://djmehe1d2j80y" path="res://Assets/Sprites/Resources/Resources/M_Icon.png" id="10_rwljt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q87kt"]
+font_size = 22
+outline_size = 6
+outline_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2r3ur"]
+font_size = 26
+outline_size = 8
+outline_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eknr4"]
+font_size = 26
+outline_size = 8
+outline_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[sub_resource type="Animation" id="Animation_mmxhv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/NinePatchRect:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, -180, 192, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/NinePatchRect/VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/NinePatchRect:pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yjtos"]
+resource_name = "error"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/NinePatchRect:pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, 0), Vector2(-100, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c5sfk"]
+resource_name = "fold"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/NinePatchRect:region_rect")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(4, 4),
+"update": 0,
+"values": [Rect2(11, 13, 134, 131), Rect2(11, 122.065, 134, 161.19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/NinePatchRect/VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mdxvf"]
+resource_name = "unfold"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/NinePatchRect:region_rect")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 4),
+"update": 0,
+"values": [Rect2(11, 122.065, 134, 161.19), Rect2(11, 13, 134, 131)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/NinePatchRect/VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_neja2"]
+_data = {
+"RESET": SubResource("Animation_mmxhv"),
+"error": SubResource("Animation_yjtos"),
+"fold": SubResource("Animation_c5sfk"),
+"unfold": SubResource("Animation_mdxvf")
+}
+
+[node name="BuildPopupParent" type="Node2D"]
+z_index = 4096
+script = ExtResource("1_n6fbb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = -118.0
+offset_top = -123.0
+offset_right = 156.0
+offset_bottom = 208.0
+scale = Vector2(0.849586, 0.824795)
+texture = ExtResource("2_1ytb8")
+region_rect = Rect2(0, -180, 192, 192)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.131
+anchor_top = 0.076
+anchor_right = 0.145
+anchor_bottom = 0.076
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2w8yi")
+theme_override_font_sizes/font_size = 20
+text = "Base Tower"
+label_settings = SubResource("LabelSettings_q87kt")
+
+[node name="TextureButton" type="TextureButton" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture_normal = ExtResource("4_3ijvq")
+texture_pressed = ExtResource("5_54i76")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer4/TextureButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_qwqbx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_r1n46")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Gold HContainer" type="HBoxContainer" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Gold HContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_p1kd4")
+expand_mode = 3
+
+[node name="Gold Label" type="Label" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Gold HContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_2r3ur")
+
+[node name="Wood HContainer" type="HBoxContainer" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Wood HContainer"]
+layout_mode = 2
+texture = ExtResource("8_43vya")
+expand_mode = 3
+
+[node name="Wood Label" type="Label" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Wood HContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_2r3ur")
+
+[node name="Food HContainer" type="HBoxContainer" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Food HContainer"]
+layout_mode = 2
+texture = ExtResource("10_rwljt")
+expand_mode = 3
+
+[node name="Food Label" type="Label" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/Food HContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "100
+"
+label_settings = SubResource("LabelSettings_eknr4")
+
+[node name="TextureButton" type="TextureButton" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_5o5h0")
+texture_pressed = ExtResource("8_xmi4v")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/NinePatchRect/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.537
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 12.896
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_2w8yi")
+text = "Build
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_neja2")
+}
+
+[connection signal="pressed" from="Control/NinePatchRect/VBoxContainer/HBoxContainer4/TextureButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/VBoxContainer/TextureButton" to="." method="_on_build_button_pressed"]

@@ -1,0 +1,374 @@
+[gd_scene load_steps=23 format=3 uid="uid://q47j1lirlfpa"]
+
+[ext_resource type="Script" path="res://UI/ZoneMenus/castle_menu.gd" id="1_dqhol"]
+[ext_resource type="Texture2D" uid="uid://cjov51uu4qfau" path="res://Assets/Sprites/UI/Banners/Banner_Connection_Up.png" id="2_wm5rf"]
+[ext_resource type="Texture2D" uid="uid://ud5vupjsnq72" path="res://Assets/Sprites/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="3_d7u8n"]
+[ext_resource type="Texture2D" uid="uid://bf25ow7iaob05" path="res://Assets/Sprites/UI/Icons/Disable_01.png" id="4_qwaj1"]
+[ext_resource type="Texture2D" uid="uid://durddllor5nne" path="res://Assets/Sprites/UI/Banners/Carved_Long_White.png" id="5_fyxk1"]
+[ext_resource type="Texture2D" uid="uid://n8fsiukd7uun" path="res://Assets/Sprites/UI/Buttons/Button_Blue_96.png" id="6_vfdc0"]
+[ext_resource type="Texture2D" uid="uid://berlkeaoi45mk" path="res://Assets/Sprites/UI/Buttons/Button_Blue_96_pressed.png" id="7_keqb8"]
+[ext_resource type="Texture2D" uid="uid://b7wmf00521lwt" path="res://Assets/Sprites/UI/Icons/Knight_Icon.png" id="8_1x6sg"]
+[ext_resource type="Texture2D" uid="uid://baangerehy57o" path="res://Assets/Sprites/UI/Buttons/Small_Button_Under.png" id="9_4vmpt"]
+[ext_resource type="Texture2D" uid="uid://4swk512urqb5" path="res://Assets/Sprites/UI/Buttons/Small_Button_Progress.png" id="10_20vb6"]
+[ext_resource type="Texture2D" uid="uid://djmehe1d2j80y" path="res://Assets/Sprites/Resources/Resources/M_Icon.png" id="11_gbaj8"]
+[ext_resource type="Texture2D" uid="uid://bt08k7oxbnx1f" path="res://Assets/Sprites/Resources/Resources/W_Icon.png" id="12_wsf33"]
+[ext_resource type="Texture2D" uid="uid://cfjd6gtrjovbc" path="res://Assets/Sprites/Resources/Resources/G_Icon.png" id="13_ss4vo"]
+[ext_resource type="Texture2D" uid="uid://csjdohfkanwc2" path="res://Assets/Sprites/UI/Buttons/Button_Hover.png" id="14_pnqqg"]
+[ext_resource type="Texture2D" uid="uid://bafrx3uowk4g5" path="res://Assets/Sprites/UI/Buttons/Button_Disable.png" id="15_12xer"]
+[ext_resource type="Texture2D" uid="uid://gu2w0crjaipt" path="res://Assets/Sprites/MovePoint/1.png" id="16_nh40k"]
+
+[sub_resource type="Animation" id="Animation_f3hms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CastleButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ooei6"]
+resource_name = "knight_error"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/HBoxContainer/HSplitContainer/Knight Box/KnightButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.984314, 0.0431373, 0.0156863, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twtpx"]
+resource_name = "menu_appear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 980), Vector2(3, 850)]
+}
+
+[sub_resource type="Animation" id="Animation_4xa2s"]
+resource_name = "menu_disappear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CastleButton/CastleImage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 850), Vector2(3, 980)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/CastleButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(77, -105)]
+}
+
+[sub_resource type="Animation" id="Animation_mkdjy"]
+resource_name = "start_game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 980)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CastleButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(77, -105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjymr"]
+_data = {
+"RESET": SubResource("Animation_f3hms"),
+"knight_error": SubResource("Animation_ooei6"),
+"menu_appear": SubResource("Animation_twtpx"),
+"menu_disappear": SubResource("Animation_4xa2s"),
+"start_game": SubResource("Animation_mkdjy")
+}
+
+[node name="CastleMenu" type="CanvasLayer" node_paths=PackedStringArray("button_sprite", "cancel_sprite", "main_window")]
+script = ExtResource("1_dqhol")
+button_sprite = NodePath("Control/CastleButton/CastleImage")
+cancel_sprite = NodePath("Control/CastleButton/CancelIcon")
+main_window = NodePath("Control/HBoxContainer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.085
+anchor_bottom = 0.085
+offset_top = -156.6
+offset_bottom = -156.6
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="CastleButton" type="TextureButton" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 115.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_wm5rf")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="CastleImage" type="TextureRect" parent="Control/CastleButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 53.0
+offset_bottom = 36.0
+scale = Vector2(2.21594, 2.12134)
+texture = ExtResource("3_d7u8n")
+expand_mode = 2
+
+[node name="CancelIcon" type="TextureRect" parent="Control/CastleButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -37.0
+offset_right = 31.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qwaj1")
+
+[node name="Background" type="Sprite2D" parent="Control"]
+position = Vector2(267, 64)
+scale = Vector2(0.862565, 0.862565)
+texture = ExtResource("5_fyxk1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 37.0
+offset_top = 2.00012
+offset_right = 489.0
+offset_bottom = 99.0001
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+dragger_visibility = 1
+
+[node name="Knight Box" type="HBoxContainer" parent="Control/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="KnightButton" type="TextureButton" parent="Control/HBoxContainer/HSplitContainer/Knight Box"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("6_vfdc0")
+texture_pressed = ExtResource("7_keqb8")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/HSplitContainer/Knight Box/KnightButton"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 18.9999
+offset_right = 64.0
+offset_bottom = 53.9999
+texture = ExtResource("8_1x6sg")
+
+[node name="KnightProgressBar" type="TextureProgressBar" parent="Control/HBoxContainer/HSplitContainer/Knight Box/KnightButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.99988
+offset_right = 69.0
+offset_bottom = 69.9999
+scale = Vector2(1.3489, 1.24627)
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("9_4vmpt")
+texture_progress = ExtResource("10_20vb6")
+tint_under = Color(1, 1, 1, 0.627451)
+
+[node name="KnightLabel" type="Label" parent="Control/HBoxContainer/HSplitContainer/Knight Box/KnightButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 78.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/HSplitContainer/Knight Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "Knight
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_gbaj8")
+expand_mode = 3
+
+[node name="KnightFoodLabel" type="Label" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("12_wsf33")
+expand_mode = 3
+
+[node name="KnightWoodLabel" type="Label" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("13_ss4vo")
+expand_mode = 3
+
+[node name="KnightGoldLabel" type="Label" parent="Control/HBoxContainer/HSplitContainer/Knight Box/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="HBox" type="HBoxContainer" parent="Control/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Move Point Button" type="TextureButton" parent="Control/HBoxContainer/HSplitContainer/HBox"]
+layout_mode = 2
+texture_normal = ExtResource("14_pnqqg")
+texture_pressed = ExtResource("15_12xer")
+flip_h = true
+
+[node name="Move Point Button Sprite" type="TextureRect" parent="Control/HBoxContainer/HSplitContainer/HBox/Move Point Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -34.0001
+offset_right = 28.0
+offset_bottom = 29.9999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_nh40k")
+
+[node name="Move Point Label" type="Label" parent="Control/HBoxContainer/HSplitContainer/HBox"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Move Point"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fjymr")
+}
+autoplay = "start_game"

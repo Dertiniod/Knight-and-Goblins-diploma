@@ -1,0 +1,91 @@
+[gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://dr42klk5sufrh"]
+
+[ext_resource type="BlackboardPlan" uid="uid://d5ug5lb3g8t2" path="res://BT_Unit2.tres" id="1_y8bsu"]
+[ext_resource type="Script" path="res://ai/tasks/should_move.gd" id="2_16sxg"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_target.gd" id="3_4wu5p"]
+[ext_resource type="Script" path="res://ai/tasks/attack_cooldown.gd" id="6_2840m"]
+[ext_resource type="Script" path="res://ai/tasks/can_attack.gd" id="6_qr2ko"]
+[ext_resource type="Script" path="res://ai/tasks/attack.gd" id="7_e50wd"]
+
+[sub_resource type="BBVariant" id="BBVariant_a64to"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ld6u0"]
+variable = "is_dead"
+value = SubResource("BBVariant_a64to")
+custom_name = "Is Dead?"
+
+[sub_resource type="BBNode" id="BBNode_gmkus"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_1gqqs"]
+animation_player = SubResource("BBNode_gmkus")
+animation_name = &"death"
+
+[sub_resource type="BTSequence" id="BTSequence_6eigg"]
+custom_name = "Die"
+children = [SubResource("BTCheckVar_ld6u0"), SubResource("BTPlayAnimation_1gqqs")]
+
+[sub_resource type="BTCondition" id="BTCondition_p74hl"]
+script = ExtResource("6_qr2ko")
+target_var = "target"
+
+[sub_resource type="BTAction" id="BTAction_542bu"]
+script = ExtResource("7_e50wd")
+
+[sub_resource type="BTCooldown" id="BTCooldown_27qvn"]
+custom_name = "Attack Cooldown"
+children = [SubResource("BTAction_542bu")]
+script = ExtResource("6_2840m")
+attack_speed = 0.0
+
+[sub_resource type="BTSequence" id="BTSequence_f5lxs"]
+custom_name = "Attack"
+children = [SubResource("BTCondition_p74hl"), SubResource("BTCooldown_27qvn")]
+
+[sub_resource type="BTCondition" id="BTCondition_awv1g"]
+script = ExtResource("2_16sxg")
+target_var = "target"
+distance_min = 80.0
+distance_max = 1e+07
+
+[sub_resource type="BBNode" id="BBNode_ug28d"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hfclc"]
+animation_player = SubResource("BBNode_ug28d")
+animation_name = &"move"
+blend = 0.1
+
+[sub_resource type="BTAction" id="BTAction_0o780"]
+script = ExtResource("3_4wu5p")
+target_var = "target"
+bb_is_dead = "is_dead"
+arrival_radius = 50.0
+
+[sub_resource type="BTSequence" id="BTSequence_k8eqk"]
+custom_name = "Move"
+children = [SubResource("BTCondition_awv1g"), SubResource("BTPlayAnimation_hfclc"), SubResource("BTAction_0o780")]
+
+[sub_resource type="BBNode" id="BBNode_6m2da"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_f4ek0"]
+animation_player = SubResource("BBNode_6m2da")
+animation_name = &"idle"
+
+[sub_resource type="BTSequence" id="BTSequence_ojwfq"]
+custom_name = "Idle"
+children = [SubResource("BTPlayAnimation_f4ek0")]
+
+[sub_resource type="BTSelector" id="BTSelector_ubfv1"]
+children = [SubResource("BTSequence_6eigg"), SubResource("BTSequence_f5lxs"), SubResource("BTSequence_k8eqk"), SubResource("BTSequence_ojwfq")]
+
+[resource]
+blackboard_plan = ExtResource("1_y8bsu")
+root_task = SubResource("BTSelector_ubfv1")

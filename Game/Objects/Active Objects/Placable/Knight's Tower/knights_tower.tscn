@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdtqfuw77ryob"]
+
+[ext_resource type="Texture2D" uid="uid://bnxdnh7k3ibyf" path="res://Assets/Sprites/Factions/Knights/Buildings/Tower/Tower_Blue.png" id="1_8rbr0"]
+[ext_resource type="Script" path="res://Game/Objects/Active Objects/Placable/Knight's Tower/knights_tower.gd" id="1_pqs3h"]
+[ext_resource type="PackedScene" uid="uid://cg2ht6nga1fv5" path="res://Game/Unit/Range/Archer/archer.tscn" id="2_carai"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flbc0"]
+radius = 27.0
+height = 90.0
+
+[node name="KnightsTower" type="Area2D"]
+script = ExtResource("1_pqs3h")
+archer_scene = ExtResource("2_carai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8rbr0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 68)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_flbc0")
+
+[node name="Marker2D" type="Node2D" parent="."]
+position = Vector2(0, -53)

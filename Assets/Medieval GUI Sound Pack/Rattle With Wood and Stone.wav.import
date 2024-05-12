@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cq2mujcpr85st"
+path="res://.godot/imported/Rattle With Wood and Stone.wav-4f319521207d68302f311a500e443393.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Rattle With Wood and Stone.wav"
+dest_files=["res://.godot/imported/Rattle With Wood and Stone.wav-4f319521207d68302f311a500e443393.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

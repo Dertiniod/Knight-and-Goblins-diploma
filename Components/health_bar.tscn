@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://blk3q0qwg4k5m"]
+
+[ext_resource type="Script" path="res://Components/health_bar.gd" id="1_vx0j3"]
+
+[node name="HealthBar" type="ProgressBar"]
+z_index = 11
+offset_left = -40.0
+offset_top = -53.0
+offset_right = 40.0
+offset_bottom = -43.0
+size_flags_horizontal = 0
+show_percentage = false
+script = ExtResource("1_vx0j3")

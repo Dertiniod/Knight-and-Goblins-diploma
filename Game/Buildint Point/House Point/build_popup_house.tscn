@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ixwntkjf0xhf"]
+
+[ext_resource type="PackedScene" uid="uid://bvmmm8p7fenx8" path="res://Game/Buildint Point/build_popup_parent.tscn" id="1_x6gav"]
+[ext_resource type="Texture2D" uid="uid://dgedskgk53ug3" path="res://Assets/Sprites/UI/Icons/House_Icon.png" id="2_vj7s8"]
+
+[node name="BuildPopupHouse" instance=ExtResource("1_x6gav")]
+
+[node name="Control" parent="." index="0"]
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Label" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer4" index="0"]
+text = "Base House"
+
+[node name="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer" index="0"]
+texture = ExtResource("2_vj7s8")
+
+[node name="Food HContainer" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" index="2"]
+visible = false

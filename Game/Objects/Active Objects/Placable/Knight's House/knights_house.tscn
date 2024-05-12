@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmlmcyxn3dwq0"]
+
+[ext_resource type="Script" path="res://Game/Objects/Active Objects/Placable/Knight's House/knights_house.gd" id="1_a404b"]
+[ext_resource type="Texture2D" uid="uid://dgbrts6wsny3j" path="res://Assets/Sprites/Factions/Knights/Buildings/House/House_Blue.png" id="2_pgjay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy27g"]
+size = Vector2(90, 108)
+
+[node name="KnightsHouse" type="Area2D"]
+script = ExtResource("1_a404b")
+
+[node name="HouseBlue" type="Sprite2D" parent="."]
+texture = ExtResource("2_pgjay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 17)
+shape = SubResource("RectangleShape2D_sy27g")

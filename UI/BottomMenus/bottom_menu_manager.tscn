@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddwupl7dthl56"]
+
+[ext_resource type="PackedScene" uid="uid://q47j1lirlfpa" path="res://UI/ZoneMenus/castle_menu.tscn" id="1_ihr25"]
+[ext_resource type="Script" path="res://UI/BottomMenus/bottom_menu_manager.gd" id="1_xxjel"]
+[ext_resource type="PackedScene" uid="uid://ck8pyx0m51axe" path="res://UI/ZoneMenus/forest_menu.tscn" id="2_ijbaw"]
+
+[node name="BottomMenuManager" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_xxjel")
+
+[node name="ForestMenu" parent="." instance=ExtResource("2_ijbaw")]
+unique_name_in_owner = true
+
+[node name="Control" parent="ForestMenu" index="0"]
+offset_top = -156.6
+offset_bottom = -156.6
+metadata/_edit_group_ = true
+
+[node name="CastleMenu" parent="." instance=ExtResource("1_ihr25")]
+unique_name_in_owner = true
+
+[node name="Control" parent="CastleMenu" index="0"]
+metadata/_edit_group_ = true
+
+[node name="CastleButton" parent="CastleMenu/Control" index="0"]
+metadata/_edit_group_ = true
+
+[editable path="ForestMenu"]
+[editable path="CastleMenu"]

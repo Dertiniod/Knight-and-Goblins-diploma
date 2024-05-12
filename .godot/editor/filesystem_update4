@@ -1,0 +1,4 @@
+res://Game/Level/level_01.tscn
+res://Assets/theme.tres
+res://Game/Level/main_tileset.tres
+res://Game/Unit/damage.gdshader

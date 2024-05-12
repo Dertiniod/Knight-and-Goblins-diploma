@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1ghyhfr2lqn"]
+
+[ext_resource type="Script" path="res://Game/Objects/Active Objects/Unplacable/castle.gd" id="1_rotfs"]
+[ext_resource type="PackedScene" uid="uid://ye16tobjf8jh" path="res://Game/Objects/Active Objects/Unplacable/castle_menu.tscn" id="2_2sxi5"]
+[ext_resource type="Texture2D" uid="uid://ccc6xkk78k7r6" path="res://Assets/Sprites/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="2_sirt3"]
+[ext_resource type="Shader" path="res://Game/Objects/Active Objects/Unplacable/outline.gdshader" id="2_yisen"]
+[ext_resource type="PackedScene" uid="uid://cln4py0nii3vq" path="res://Game/Unit/Melee/Knight/knight.tscn" id="3_5ws48"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tj3ht"]
+shader = ExtResource("2_yisen")
+shader_parameter/color = Color(0.498039, 0.862745, 0, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mca2r"]
+size = Vector2(271, 186)
+
+[node name="Castle" type="Area2D"]
+script = ExtResource("1_rotfs")
+castle_menu = ExtResource("2_2sxi5")
+knight_scene = ExtResource("3_5ws48")
+knight_spawn_time = 3.0
+enemy_group_name = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tj3ht")
+texture = ExtResource("2_sirt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 16)
+shape = SubResource("RectangleShape2D_mca2r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="KnightSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, 151)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 151.0
+offset_right = 40.0
+offset_bottom = 191.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+offset_left = -120.0
+offset_top = -266.0
+offset_right = 120.0
+offset_bottom = -239.0
+max_value = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -118.0
+offset_top = -291.0
+offset_right = -78.0
+offset_bottom = -269.0
+text = "Knights in queue:"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -291.0
+offset_right = 65.0
+offset_bottom = -269.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

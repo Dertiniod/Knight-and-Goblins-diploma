@@ -1,0 +1,2 @@
+extends LevelObject
+class_name StaticObject

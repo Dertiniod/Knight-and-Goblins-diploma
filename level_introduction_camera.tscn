@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv3l81gv6f4ot"]
+
+[ext_resource type="Script" path="res://Game/Level/level_introduction_camera.gd" id="1_1fj2e"]
+
+[node name="LevelIntroductionCamera" type="PathFollow2D"]
+process_mode = 3
+position = Vector2(1, -1519)
+rotation = 0.829099
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("1_1fj2e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

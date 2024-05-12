@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpj0chygewk4r"]
+
+[ext_resource type="Script" path="res://Game/Buildint Point/building_point.gd" id="1_ado5p"]
+[ext_resource type="PackedScene" uid="uid://b0aiwbk8tnp45" path="res://Game/Buildint Point/build_in_progress.tscn" id="2_c32hc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xcs3"]
+size = Vector2(93, 100)
+
+[node name="BuildingPoint" type="Area2D"]
+script = ExtResource("1_ado5p")
+
+[node name="ClickSide" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5xcs3")
+
+[node name="BuildSide" type="Sprite2D" parent="."]
+
+[node name="BuildInProgress" parent="." instance=ExtResource("2_c32hc")]
+visible = false
+
+[node name="AnimationPlayer" parent="BuildInProgress" index="1"]
+autoplay = "Hammer"
+
+[node name="BuildTimer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -85.0
+offset_top = -90.0
+offset_right = 151.0
+offset_bottom = -63.0
+scale = Vector2(0.72, 1.08)
+max_value = 1.0
+value = 0.64
+show_percentage = false
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+
+[editable path="BuildInProgress"]

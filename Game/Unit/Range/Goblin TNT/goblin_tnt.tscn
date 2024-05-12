@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvrq54btk2hyd"]
+
+[ext_resource type="PackedScene" uid="uid://du42omhuuhng1" path="res://Game/Unit/Range/range.tscn" id="1_thhe1"]
+[ext_resource type="AnimationLibrary" uid="uid://d0xbdth2b4te1" path="res://Game/Unit/Range/Goblin TNT/goblin_tnt_anim.res" id="2_7d1wl"]
+[ext_resource type="Texture2D" uid="uid://cmmhxonf8r0kb" path="res://Assets/Sprites/Factions/Goblins/Troops/TNT/TNT_Red.png" id="2_chu38"]
+[ext_resource type="Script" path="res://Game/Unit/Range/Goblin TNT/goblin_tnt.gd" id="2_hky3g"]
+
+[node name="GoblinTNT" instance=ExtResource("1_thhe1")]
+script = ExtResource("2_hky3g")
+
+[node name="AnimationTree" parent="." index="1"]
+libraries = {
+"": ExtResource("2_7d1wl")
+}
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CharacterSprite" parent="." index="3"]
+texture = ExtResource("2_chu38")
+flip_h = true
+hframes = 7
+vframes = 3
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": ExtResource("2_7d1wl")
+}

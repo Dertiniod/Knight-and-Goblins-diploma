@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhblluu0imxaa"]
+
+[ext_resource type="Script" path="res://UI/DropdownMenus/dropdown_menus_manager.gd" id="1_eq4yj"]
+[ext_resource type="PackedScene" uid="uid://c1dlgtd6eie0c" path="res://UI/DropdownMenus/pause_menu.tscn" id="2_yg6nw"]
+[ext_resource type="PackedScene" uid="uid://bc7h8ecqcyq7v" path="res://UI/DropdownMenus/setting_pause_menu.tscn" id="3_qtf5f"]
+[ext_resource type="PackedScene" uid="uid://cdcnrhrq7poaj" path="res://UI/lose_menu.tscn" id="4_scdpe"]
+[ext_resource type="PackedScene" uid="uid://d0t3qo6s2jiv5" path="res://UI/win_menu.tscn" id="5_de2d0"]
+
+[node name="DropdownMenusManager" type="Node2D"]
+script = ExtResource("1_eq4yj")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_yg6nw")]
+visible = false
+
+[node name="SettingPauseMenu" parent="." instance=ExtResource("3_qtf5f")]
+visible = false
+
+[node name="LoseMenu" parent="." instance=ExtResource("4_scdpe")]
+visible = false
+
+[node name="WinMenu" parent="." instance=ExtResource("5_de2d0")]
+visible = false

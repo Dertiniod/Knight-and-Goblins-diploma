@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://cg2ht6nga1fv5"]
+
+[ext_resource type="PackedScene" uid="uid://du42omhuuhng1" path="res://Game/Unit/Range/range.tscn" id="1_pkoti"]
+[ext_resource type="Script" path="res://Game/Unit/Range/Archer/archer.gd" id="2_hr6gt"]
+[ext_resource type="PackedScene" uid="uid://sjbacyfk77ms" path="res://Game/Items/arrow.tscn" id="3_5nue2"]
+[ext_resource type="Texture2D" uid="uid://cgaq2kn3r6n72" path="res://Assets/Sprites/Factions/Knights/Troops/Archer/Archer_Blue.png" id="3_t7bi5"]
+[ext_resource type="Resource" uid="uid://wdk7177upcny" path="res://Data/Units/archer_data.tres" id="4_ak2bf"]
+[ext_resource type="AnimationLibrary" uid="uid://4nugthn22m52" path="res://Game/Unit/Range/Archer/archer_anim.res" id="4_bfd2e"]
+[ext_resource type="BehaviorTree" uid="uid://dppbtm00t6h5" path="res://Game/Unit/Range/Archer/BT_archer.tres" id="5_7eis8"]
+[ext_resource type="BlackboardPlan" uid="uid://dug87wj6yuhry" path="res://Game/Unit/Range/Archer/BB_archer.tres" id="6_nvchi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5g16"]
+radius = 26.0768
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_guto0"]
+radius = 534.682
+
+[node name="Archer" instance=ExtResource("1_pkoti")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_hr6gt")
+arrow_scene = ExtResource("3_5nue2")
+unit_data = ExtResource("4_ak2bf")
+
+[node name="Shoot Cooldown" type="Timer" parent="." index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="DamageComponent" parent="." index="2"]
+damage_amount = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_i5g16")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": ExtResource("4_bfd2e")
+}
+
+[node name="SpotArea" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotArea" index="0"]
+shape = SubResource("CircleShape2D_guto0")
+debug_color = Color(0.945098, 0.203922, 0.301961, 0.419608)
+
+[node name="AttackArea" parent="." index="6"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+debug_color = Color(0.592157, 0.541176, 0.258824, 0.419608)
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="7"]
+behavior_tree = ExtResource("5_7eis8")
+blackboard_plan = ExtResource("6_nvchi")
+
+[node name="ArrowSpawnPoint" type="Marker2D" parent="." index="8"]
+position = Vector2(-10, 63)
+
+[node name="CharacterSprite" parent="." index="12"]
+texture = ExtResource("3_t7bi5")
+hframes = 8
+vframes = 7
+frame = 22

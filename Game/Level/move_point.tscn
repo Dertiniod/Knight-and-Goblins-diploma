@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://pcyq4uoie15j"]
+
+[ext_resource type="Script" path="res://Game/Level/move_point.gd" id="1_4scgv"]
+[ext_resource type="Texture2D" uid="uid://gu2w0crjaipt" path="res://Assets/Sprites/MovePoint/1.png" id="1_78c7a"]
+[ext_resource type="Texture2D" uid="uid://dxmydsrorblkb" path="res://Assets/Sprites/MovePoint/2.png" id="2_ifwkc"]
+[ext_resource type="Texture2D" uid="uid://dqox01f8rjacg" path="res://Assets/Sprites/MovePoint/3.png" id="3_bo236"]
+[ext_resource type="Texture2D" uid="uid://c7cib6xcb1e7l" path="res://Assets/Sprites/MovePoint/4.png" id="4_p4x4p"]
+[ext_resource type="Texture2D" uid="uid://nb4c8hssgque" path="res://Assets/Sprites/MovePoint/5.png" id="5_urflt"]
+[ext_resource type="Texture2D" uid="uid://o7x3hnn5htfy" path="res://Assets/Sprites/MovePoint/6.png" id="6_2nsfg"]
+[ext_resource type="Texture2D" uid="uid://dl7b73ujofn4h" path="res://Assets/Sprites/MovePoint/7.png" id="7_geqfe"]
+[ext_resource type="Texture2D" uid="uid://uo0i41id1ukq" path="res://Assets/Sprites/MovePoint/8.png" id="8_wyirj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0j568"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_78c7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ifwkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bo236")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p4x4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_urflt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2nsfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_geqfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wyirj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yk0fx"]
+resource_name = "new_animation"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehiue"]
+_data = {
+"new_animation": SubResource("Animation_yk0fx")
+}
+
+[node name="MovePoint" type="Marker2D"]
+script = ExtResource("1_4scgv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -35)
+sprite_frames = SubResource("SpriteFrames_0j568")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ehiue")
+}
+autoplay = "new_animation"

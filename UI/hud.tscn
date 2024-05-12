@@ -1,0 +1,398 @@
+[gd_scene load_steps=21 format=3 uid="uid://cl8mjefv2q4a7"]
+
+[ext_resource type="Texture2D" uid="uid://ckv21wfwqqb48" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Red_3Slides.png" id="1_p1d1b"]
+[ext_resource type="Script" path="res://UI/hud.gd" id="1_u5461"]
+[ext_resource type="Texture2D" uid="uid://cfjd6gtrjovbc" path="res://Assets/Sprites/Resources/Resources/G_Icon.png" id="3_dtwbg"]
+[ext_resource type="Texture2D" uid="uid://bsb2ooiqbhjpa" path="res://Assets/Sprites/UI/Banners/Carved_128W.png" id="3_r68nn"]
+[ext_resource type="Texture2D" uid="uid://djmehe1d2j80y" path="res://Assets/Sprites/Resources/Resources/M_Icon.png" id="4_6uocw"]
+[ext_resource type="Texture2D" uid="uid://bt08k7oxbnx1f" path="res://Assets/Sprites/Resources/Resources/W_Icon.png" id="5_el77k"]
+[ext_resource type="Texture2D" uid="uid://ckx1ysmq4y16b" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Blue_Connection_Right.png" id="6_0ekhn"]
+[ext_resource type="Texture2D" uid="uid://n4pd1lxd7doo" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Blue_Connection_Right_Pressed.png" id="7_1gxw4"]
+[ext_resource type="Texture2D" uid="uid://bmp32fqa0agwr" path="res://Assets/Sprites/UI/Icons/Regular_02.png" id="8_xftis"]
+[ext_resource type="Texture2D" uid="uid://dulu1tafp30bk" path="res://Assets/Sprites/UI/Icons/Regular_03.png" id="9_1n8je"]
+[ext_resource type="Script" path="res://UI/menu_button.gd" id="9_j1a5f"]
+[ext_resource type="Texture2D" uid="uid://d3iex0th30ddw" path="res://Assets/Sprites/UI/Icons/Regular_07.png" id="10_t4gel"]
+[ext_resource type="Texture2D" uid="uid://dg62dpvqhr28w" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Yellow_Connection_Left.png" id="12_tgh86"]
+[ext_resource type="Texture2D" uid="uid://dsm3e4tsi8c1p" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Yellow_Connection_Left_Pressed.png" id="13_tyfch"]
+[ext_resource type="Texture2D" uid="uid://b7wmf00521lwt" path="res://Assets/Sprites/UI/Icons/Knight_Icon.png" id="13_u0xrx"]
+[ext_resource type="PackedScene" uid="uid://b3yu5wvuqduy8" path="res://UI/alert.tscn" id="16_42ivx"]
+
+[sub_resource type="Animation" id="Animation_pl3d5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Header/WaveTime:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(91, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_dvcer"]
+resource_name = "wave_timer_finished"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Header/WaveTime:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(91, 70), Vector2(91, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_qivxh"]
+resource_name = "wave_timer_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Header/WaveTime:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(91, 40), Vector2(91, 70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8t0m"]
+_data = {
+"RESET": SubResource("Animation_pl3d5"),
+"wave_timer_finished": SubResource("Animation_dvcer"),
+"wave_timer_start": SubResource("Animation_qivxh")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_u5461")
+
+[node name="Alert" parent="." instance=ExtResource("16_42ivx")]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -350.0
+offset_right = 0.0
+offset_bottom = -350.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Header" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.02
+anchor_right = 1.0
+anchor_bottom = 0.04
+offset_left = 2.0
+offset_top = -0.199999
+offset_right = 2.0
+offset_bottom = 59.8
+grow_horizontal = 2
+
+[node name="WaveTime" type="Label" parent="Header"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = -39.2
+offset_right = 149.0
+offset_bottom = -17.2
+grow_vertical = 0
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.191
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.14
+offset_right = 48.0
+offset_bottom = -0.199997
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Waves Panel" type="TextureRect" parent="Header/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p1d1b")
+expand_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/HBoxContainer/Waves Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197
+anchor_top = 0.049
+anchor_right = 0.819
+anchor_bottom = 0.427
+offset_right = 1.0
+offset_bottom = 22.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Header/HBoxContainer/Waves Panel/HBoxContainer"]
+layout_mode = 2
+text = "Waves:"
+
+[node name="Waves Label" type="Label" parent="Header/HBoxContainer/Waves Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0 /"
+
+[node name="Waves Limit Label" type="Label" parent="Header/HBoxContainer/Waves Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "4"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Header/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Header/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_r68nn")
+expand_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/HBoxContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.485
+anchor_top = 0.5
+anchor_right = 0.485
+anchor_bottom = 0.5
+offset_left = -70.63
+offset_top = -11.5
+offset_right = 74.37
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_dtwbg")
+expand_mode = 3
+
+[node name="Gold Label" type="Label" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_el77k")
+expand_mode = 3
+
+[node name="Wood Label" type="Label" parent="Header/HBoxContainer/VBoxContainer/TextureRect/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="TextureRect2" type="TextureRect" parent="Header/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_r68nn")
+expand_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/HBoxContainer/VBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.065
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_right = 94.0
+offset_bottom = 11.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Header/HBoxContainer/VBoxContainer/TextureRect2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_6uocw")
+expand_mode = 2
+
+[node name="Food Label" type="Label" parent="Header/HBoxContainer/VBoxContainer/TextureRect2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50
+"
+
+[node name="Slash" type="Label" parent="Header/HBoxContainer/VBoxContainer/TextureRect2/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="Food Limit" type="Label" parent="Header/HBoxContainer/VBoxContainer/TextureRect2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50
+"
+
+[node name="RightSideMenu" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.934
+anchor_top = 0.158
+anchor_right = 1.02
+anchor_bottom = 0.503
+offset_left = -40.24
+offset_top = -21.68
+offset_right = -0.23999
+offset_bottom = 18.32
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightSideMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Pause" type="TextureButton" parent="RightSideMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_0ekhn")
+texture_pressed = ExtResource("7_1gxw4")
+stretch_mode = 0
+script = ExtResource("9_j1a5f")
+
+[node name="TextureRect" type="TextureRect" parent="RightSideMenu/VBoxContainer/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_xftis")
+
+[node name="Sound" type="TextureButton" parent="RightSideMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_0ekhn")
+texture_pressed = ExtResource("7_1gxw4")
+stretch_mode = 0
+script = ExtResource("9_j1a5f")
+type = 1
+
+[node name="TextureRect" type="TextureRect" parent="RightSideMenu/VBoxContainer/Sound"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_1n8je")
+
+[node name="Shop" type="TextureButton" parent="RightSideMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_0ekhn")
+texture_pressed = ExtResource("7_1gxw4")
+stretch_mode = 0
+script = ExtResource("9_j1a5f")
+type = 2
+
+[node name="TextureRect" type="TextureRect" parent="RightSideMenu/VBoxContainer/Shop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_t4gel")
+
+[node name="LeftSideMenu" type="Control" parent="."]
+layout_mode = 3
+anchor_left = -0.025
+anchor_top = 0.28
+anchor_right = 0.049
+anchor_bottom = 0.299
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureButton" parent="LeftSideMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.145
+anchor_bottom = 0.145
+offset_top = -32.4448
+offset_right = 86.0
+offset_bottom = 47.5552
+grow_vertical = 2
+texture_normal = ExtResource("12_tgh86")
+texture_pressed = ExtResource("13_tyfch")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="LeftSideMenu/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.573
+anchor_top = 0.384
+anchor_right = 0.573
+anchor_bottom = 0.384
+offset_left = -15.0
+offset_top = -17.5
+offset_right = 15.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_u0xrx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_r8t0m")
+}
+autoplay = "RESET"
+
+[editable path="Alert"]

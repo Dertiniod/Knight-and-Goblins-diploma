@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d377ctaitmdqc"
+path="res://.godot/imported/Sizzling Shards.wav-3176aa1af1f9f6f5c95c72de7b013bff.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Sizzling Shards.wav"
+dest_files=["res://.godot/imported/Sizzling Shards.wav-3176aa1af1f9f6f5c95c72de7b013bff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

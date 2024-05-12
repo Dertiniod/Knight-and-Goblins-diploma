@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1mffsmegjv4r"
+path="res://.godot/imported/Whoosh 2.wav-987f8b5693423ffa5c4aed086fd7bd59.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Whoosh 2.wav"
+dest_files=["res://.godot/imported/Whoosh 2.wav-987f8b5693423ffa5c4aed086fd7bd59.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

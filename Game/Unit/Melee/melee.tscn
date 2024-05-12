@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ujvueu0vgvu"]
+
+[ext_resource type="PackedScene" uid="uid://co5dg8i3t3xhv" path="res://Game/Unit/Unit.tscn" id="1_a1uge"]
+[ext_resource type="Script" path="res://Game/Unit/Melee/melee.gd" id="2_xxqqg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnsi7"]
+radius = 17.1172
+
+[node name="Melee" instance=ExtResource("1_a1uge")]
+wall_min_slide_angle = 0.0
+script = ExtResource("2_xxqqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="9"]
+shape = SubResource("CircleShape2D_fnsi7")

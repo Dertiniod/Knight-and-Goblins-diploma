@@ -1,0 +1,2 @@
+extends ActiveObject
+class_name Placable

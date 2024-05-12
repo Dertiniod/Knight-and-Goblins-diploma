@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm0v3rsrhj3hm"]
+
+[ext_resource type="PackedScene" uid="uid://cpj0chygewk4r" path="res://Game/Buildint Point/building_point.tscn" id="1_i3ilo"]
+[ext_resource type="Script" path="res://Game/Buildint Point/Tower Point/tower_point.gd" id="2_xlmjk"]
+[ext_resource type="Texture2D" uid="uid://bjsy47rfuxgs2" path="res://Assets/Sprites/Factions/Knights/Buildings/Tower/Tower_Construction.png" id="3_hn3r7"]
+
+[node name="TowerBuildingPoint" instance=ExtResource("1_i3ilo")]
+script = ExtResource("2_xlmjk")
+
+[node name="ClickSide" parent="." index="0"]
+position = Vector2(-1.5, 57.5)
+
+[node name="BuildSide" parent="." index="1"]
+texture = ExtResource("3_hn3r7")
+
+[node name="AnimatedSprite2D" parent="BuildInProgress" index="2"]
+frame = 1
+
+[node name="ProgressBar" parent="." index="4"]
+visible = false
+
+[editable path="BuildInProgress"]

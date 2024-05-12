@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://uroe2fonifs3"]
+
+[ext_resource type="PackedScene" uid="uid://b7ujvueu0vgvu" path="res://Game/Unit/Melee/melee.tscn" id="1_p23p8"]
+[ext_resource type="Script" path="res://Game/Unit/Melee/Goblin/goblin.gd" id="2_d05wq"]
+[ext_resource type="Shader" path="res://Game/Unit/damage.gdshader" id="2_tvu3i"]
+[ext_resource type="AnimationLibrary" uid="uid://bpgca6thfyshp" path="res://Game/Unit/Melee/Goblin/goblin_anim.res" id="3_dgfsi"]
+[ext_resource type="Resource" uid="uid://biktcpmcj6bso" path="res://Data/Units/goblin_data.tres" id="3_ejugu"]
+[ext_resource type="Texture2D" uid="uid://cqd66xraypff6" path="res://Assets/Sprites/Factions/Goblins/Troops/Torch/Torch_Red.png" id="4_7hqq8"]
+[ext_resource type="BehaviorTree" uid="uid://cwyaly0v8a4l" path="res://Game/Unit/Melee/Goblin/BT_goblin.tres" id="5_sh8bc"]
+[ext_resource type="BlackboardPlan" uid="uid://d5ug5lb3g8t2" path="res://BT_Unit2.tres" id="8_hppgg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqxf3"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ijx8"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqeei"]
+size = Vector2(140.5, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_haac6"]
+size = Vector2(58, 52)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uihbw"]
+resource_local_to_scene = true
+shader = ExtResource("2_tvu3i")
+shader_parameter/hit_opacity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_icgeg"]
+radius = 23.0489
+
+[node name="Goblin" instance=ExtResource("1_p23p8")]
+collision_layer = 4
+motion_mode = 0
+script = ExtResource("2_d05wq")
+starting_direction = -1
+unit_data = ExtResource("3_ejugu")
+
+[node name="DamageComponent" parent="." index="1"]
+damage_amount = 25.0
+
+[node name="SpotArea" parent="." index="2"]
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotArea" index="0"]
+shape = SubResource("CircleShape2D_fqxf3")
+debug_color = Color(0.945098, 0.203922, 0.301961, 0.419608)
+
+[node name="AttackArea" parent="." index="3"]
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_5ijx8")
+
+[node name="HitBox" parent="." index="4"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(70, 0)
+shape = SubResource("RectangleShape2D_sqeei")
+debug_color = Color(0.596078, 0.545098, 0.105882, 0.419608)
+
+[node name="HurtBox" parent="." index="5"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_haac6")
+debug_color = Color(0, 0.635294, 0.439216, 0.419608)
+
+[node name="CharacterSprite" parent="." index="7"]
+material = SubResource("ShaderMaterial_uihbw")
+position = Vector2(1, -4)
+texture = ExtResource("4_7hqq8")
+hframes = 7
+vframes = 5
+frame = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": ExtResource("3_dgfsi")
+}
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="10"]
+behavior_tree = ExtResource("5_sh8bc")
+blackboard_plan = ExtResource("8_hppgg")
+
+[node name="CollisionShape2D" parent="." index="11"]
+position = Vector2(-5, 1.5)
+shape = SubResource("CircleShape2D_icgeg")

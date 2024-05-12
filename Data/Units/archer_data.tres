@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WarUnitData" load_steps=2 format=3 uid="uid://wdk7177upcny"]
+
+[ext_resource type="Script" path="res://Data/Units/war_unit_data.gd" id="1_vfxrd"]
+
+[resource]
+script = ExtResource("1_vfxrd")
+damage = 25
+attack_speed = 2.0
+can_miss = true
+miss_chance = 0.3
+name = "archer"
+ally_group_name = "knights"
+enemy_group_name = "goblins"
+description = ""
+health = 100
+spawn_time = 15
+gold = 0
+food = 0
+wood = 0
+scene_path = ""

@@ -1,0 +1,104 @@
+[gd_resource type="BehaviorTree" load_steps=29 format=3 uid="uid://cgviq3lp6y7xj"]
+
+[ext_resource type="BlackboardPlan" uid="uid://x5yy26r5lwee" path="res://Game/Unit/Behavior Tree/BB_unit.tres" id="1_h4bd7"]
+[ext_resource type="Script" path="res://ai/tasks/should_retreat.gd" id="2_ndi2d"]
+[ext_resource type="Script" path="res://ai/tasks/retreat.gd" id="3_w47b5"]
+[ext_resource type="Script" path="res://ai/tasks/should_move.gd" id="4_qlhfj"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_target.gd" id="5_67gau"]
+[ext_resource type="Script" path="res://ai/tasks/can_attack.gd" id="6_fu0wx"]
+[ext_resource type="Script" path="res://ai/tasks/attack.gd" id="7_o2g6u"]
+
+[sub_resource type="BTCondition" id="BTCondition_ol6rr"]
+script = ExtResource("2_ndi2d")
+bb_is_hp_low = "is_hp_low"
+bb_is_retread_finished = "is_retreat_finished"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_a2q73"]
+text = "Retreat"
+
+[sub_resource type="BBNode" id="BBNode_jickv"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_tob0b"]
+animation_player = SubResource("BBNode_jickv")
+animation_name = &"move"
+blend = 0.1
+
+[sub_resource type="BTAction" id="BTAction_uxuiq"]
+script = ExtResource("3_w47b5")
+target_var = "target"
+tolerance = 20.0
+bb_retreat_position = "retreat_position"
+bb_is_retreat_finished = "is_retreat_finished"
+
+[sub_resource type="BTSequence" id="BTSequence_bw6n2"]
+custom_name = "Retreat"
+children = [SubResource("BTCondition_ol6rr"), SubResource("BTConsolePrint_a2q73"), SubResource("BTPlayAnimation_tob0b"), SubResource("BTAction_uxuiq")]
+
+[sub_resource type="BTCondition" id="BTCondition_awv1g"]
+script = ExtResource("4_qlhfj")
+distance_min = 100.0
+distance_max = 1e+07
+target_var = "target"
+
+[sub_resource type="BBNode" id="BBNode_s8ott"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_hfclc"]
+animation_player = SubResource("BBNode_s8ott")
+animation_name = &"move"
+blend = 0.1
+
+[sub_resource type="BTAction" id="BTAction_0o780"]
+script = ExtResource("5_67gau")
+target = "target"
+tolerance = 100.0
+bb_is_hp_low = "is_hp_low"
+
+[sub_resource type="BTSequence" id="BTSequence_k8eqk"]
+custom_name = "Chase"
+children = [SubResource("BTCondition_awv1g"), SubResource("BTPlayAnimation_hfclc"), SubResource("BTAction_0o780")]
+
+[sub_resource type="BTCondition" id="BTCondition_p74hl"]
+script = ExtResource("6_fu0wx")
+target_var = "target"
+
+[sub_resource type="BTAction" id="BTAction_542bu"]
+script = ExtResource("7_o2g6u")
+
+[sub_resource type="BTCooldown" id="BTCooldown_27qvn"]
+duration = 2.0
+children = [SubResource("BTAction_542bu")]
+
+[sub_resource type="BTSequence" id="BTSequence_f5lxs"]
+custom_name = "Attack"
+children = [SubResource("BTCondition_p74hl"), SubResource("BTCooldown_27qvn")]
+
+[sub_resource type="BTSelector" id="BTSelector_s8ex2"]
+custom_name = "Combat Action Select"
+children = [SubResource("BTSequence_k8eqk"), SubResource("BTSequence_f5lxs")]
+
+[sub_resource type="BTSequence" id="BTSequence_r2gm1"]
+custom_name = "Combat"
+children = [SubResource("BTSelector_s8ex2")]
+
+[sub_resource type="BBNode" id="BBNode_6m2da"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_f4ek0"]
+animation_player = SubResource("BBNode_6m2da")
+animation_name = &"idle_left"
+
+[sub_resource type="BTSequence" id="BTSequence_ojwfq"]
+custom_name = "Idle"
+children = [SubResource("BTPlayAnimation_f4ek0")]
+
+[sub_resource type="BTSelector" id="BTSelector_ubfv1"]
+children = [SubResource("BTSequence_bw6n2"), SubResource("BTSequence_r2gm1"), SubResource("BTSequence_ojwfq")]
+
+[resource]
+blackboard_plan = ExtResource("1_h4bd7")
+root_task = SubResource("BTSelector_ubfv1")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dj57l10bbfssw"]
+
+[node name="Base" type="Node2D"]
+y_sort_enabled = true
+
+[node name="SpawnBuildings" type="Node2D" parent="."]

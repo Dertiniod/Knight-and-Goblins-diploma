@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=3 uid="uid://cln4py0nii3vq"]
+
+[ext_resource type="PackedScene" uid="uid://b7ujvueu0vgvu" path="res://Game/Unit/Melee/melee.tscn" id="1_3qvhb"]
+[ext_resource type="Script" path="res://Game/Unit/Melee/Knight/knight.gd" id="2_ehtcu"]
+[ext_resource type="Texture2D" uid="uid://b52i478f4n14w" path="res://Assets/Sprites/Factions/Knights/Troops/Warrior/Warrior_Blue.png" id="3_38kjm"]
+[ext_resource type="Resource" uid="uid://o5wj25s0hk5a" path="res://Data/Units/knight_data.tres" id="3_cde86"]
+[ext_resource type="Shader" path="res://Game/Unit/damage.gdshader" id="3_jw375"]
+[ext_resource type="AnimationLibrary" uid="uid://bg73fhdrrw3ns" path="res://Game/Unit/Melee/Knight/knight_anim.res" id="3_qjj4n"]
+[ext_resource type="BehaviorTree" uid="uid://dr42klk5sufrh" path="res://Game/Unit/Melee/Knight/BT_knight.tres" id="6_0jbj5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqxf3"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ijx8"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c722x"]
+size = Vector2(40, 130.563)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqink"]
+size = Vector2(42, 44)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njmj7"]
+resource_local_to_scene = true
+shader = ExtResource("3_jw375")
+shader_parameter/hit_opacity = 0.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ykx0j"]
+var/is_enemy_in_spot_range/name = "is_enemy_in_spot_range"
+var/is_enemy_in_spot_range/type = 1
+var/is_enemy_in_spot_range/value = false
+var/is_enemy_in_spot_range/hint = 0
+var/is_enemy_in_spot_range/hint_string = ""
+var/target/name = "target"
+var/target/type = 24
+var/target/hint = 0
+var/target/hint_string = ""
+var/available_enemies/name = "available_enemies"
+var/available_enemies/type = 28
+var/available_enemies/value = []
+var/available_enemies/hint = 0
+var/available_enemies/hint_string = ""
+var/target_position/name = "target_position"
+var/target_position/type = 5
+var/target_position/value = Vector2(0, 0)
+var/target_position/hint = 0
+var/target_position/hint_string = ""
+var/is_free/name = "is_free"
+var/is_free/type = 1
+var/is_free/value = true
+var/is_free/hint = 0
+var/is_free/hint_string = ""
+var/is_dead/name = "is_dead"
+var/is_dead/type = 1
+var/is_dead/value = false
+var/is_dead/hint = 0
+var/is_dead/hint_string = ""
+var/is_hp_low/name = "is_hp_low"
+var/is_hp_low/type = 1
+var/is_hp_low/value = false
+var/is_hp_low/hint = 0
+var/is_hp_low/hint_string = ""
+var/retreat_position/name = "retreat_position"
+var/retreat_position/type = 5
+var/retreat_position/value = Vector2(0, 0)
+var/retreat_position/hint = 0
+var/retreat_position/hint_string = ""
+var/is_retreat_finished/name = "is_retreat_finished"
+var/is_retreat_finished/type = 1
+var/is_retreat_finished/value = false
+var/is_retreat_finished/hint = 0
+var/is_retreat_finished/hint_string = ""
+var/attack_speed/name = "attack_speed"
+var/attack_speed/type = 3
+var/attack_speed/value = 5.0
+var/attack_speed/hint = 0
+var/attack_speed/hint_string = ""
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e857e"]
+
+[node name="Knight" instance=ExtResource("1_3qvhb")]
+collision_layer = 2
+script = ExtResource("2_ehtcu")
+unit_data = ExtResource("3_cde86")
+
+[node name="DamageComponent" parent="." index="1"]
+damage_amount = 50.0
+
+[node name="SpotArea" parent="." index="2"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotArea" index="0"]
+shape = SubResource("CircleShape2D_fqxf3")
+debug_color = Color(0.945098, 0.203922, 0.301961, 0.419608)
+
+[node name="AttackArea" parent="." index="3"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_5ijx8")
+
+[node name="HitBox" parent="." index="4"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, 70)
+shape = SubResource("RectangleShape2D_c722x")
+debug_color = Color(0.596078, 0.545098, 0.105882, 0.419608)
+
+[node name="HurtBox" parent="." index="5"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_gqink")
+debug_color = Color(0, 0.631373, 0.45098, 0.419608)
+
+[node name="CharacterSprite" parent="." index="7"]
+material = SubResource("ShaderMaterial_njmj7")
+position = Vector2(1, -4)
+rotation = 6.28319
+texture = ExtResource("3_38kjm")
+hframes = 6
+vframes = 8
+frame = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": ExtResource("3_qjj4n")
+}
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="10"]
+behavior_tree = ExtResource("6_0jbj5")
+blackboard_plan = SubResource("BlackboardPlan_ykx0j")
+
+[node name="CollisionShape2D" parent="." index="11"]
+shape = SubResource("CircleShape2D_e857e")

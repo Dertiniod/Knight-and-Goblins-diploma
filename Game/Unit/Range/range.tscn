@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://du42omhuuhng1"]
+
+[ext_resource type="PackedScene" uid="uid://co5dg8i3t3xhv" path="res://Game/Unit/Unit.tscn" id="1_q30dv"]
+[ext_resource type="Script" path="res://Game/Unit/Range/range.gd" id="2_bq7bu"]
+
+[node name="Range" instance=ExtResource("1_q30dv")]
+script = ExtResource("2_bq7bu")

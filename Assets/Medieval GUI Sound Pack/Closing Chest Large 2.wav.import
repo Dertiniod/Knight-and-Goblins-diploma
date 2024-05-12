@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dh4i2a4juqlt3"
+path="res://.godot/imported/Closing Chest Large 2.wav-bf8d05340bb53b81e423ee9a02e2ad13.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Closing Chest Large 2.wav"
+dest_files=["res://.godot/imported/Closing Chest Large 2.wav-bf8d05340bb53b81e423ee9a02e2ad13.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

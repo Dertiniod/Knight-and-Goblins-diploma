@@ -1,0 +1,282 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdcnrhrq7poaj"]
+
+[ext_resource type="Texture2D" uid="uid://b7esnngfwdda1" path="res://Assets/Sprites/UI/Banners/Carved_9Slides.png" id="1_77ig6"]
+[ext_resource type="Script" path="res://UI/win_menu.gd" id="1_oj3vo"]
+[ext_resource type="Texture2D" uid="uid://cgf3up7lklyc8" path="res://Assets/Sprites/UI/Icons/star_large.png" id="2_87qn1"]
+[ext_resource type="Texture2D" uid="uid://bkae3r0c6yrws" path="res://Assets/Sprites/UI/Buttons/Button_Hover_3Slides.png" id="3_mbno3"]
+[ext_resource type="Texture2D" uid="uid://chot4ykkcxxmn" path="res://Assets/Sprites/UI/Buttons/Button_Disable_3Slides.png" id="4_0x8l7"]
+[ext_resource type="Texture2D" uid="uid://drqlurpc60rme" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides.png" id="5_5hpbc"]
+[ext_resource type="Texture2D" uid="uid://brg76ir3b6e7u" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="6_7kq1w"]
+[ext_resource type="Texture2D" uid="uid://dsrqxfwwm4phk" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Red_Long.png" id="7_o6pko"]
+
+[sub_resource type="Animation" id="Animation_htmel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(274, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.156863)]
+}
+
+[sub_resource type="Animation" id="Animation_y2rqh"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.156863)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, -700), Vector2(274, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ftg33"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, 0), Vector2(274, -700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.156863), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7nmfx"]
+resource_name = "menu_change"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, 0), Vector2(274, -700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7a0vp"]
+_data = {
+"RESET": SubResource("Animation_htmel"),
+"appear": SubResource("Animation_y2rqh"),
+"disappear": SubResource("Animation_ftg33"),
+"menu_change": SubResource("Animation_7nmfx")
+}
+
+[node name="LoseMenu" type="CanvasLayer" node_paths=PackedStringArray("anim_player")]
+process_mode = 3
+script = ExtResource("1_oj3vo")
+type = 4
+anim_player = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.156863)
+
+[node name="Control" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 4.0
+offset_right = 4.0
+offset_bottom = 272.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_right = 147.0
+offset_bottom = 313.0
+grow_horizontal = 2
+texture = ExtResource("1_77ig6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+offset_left = -95.6
+offset_top = 36.0
+offset_right = 96.6
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You lost. Looser."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TextureRect2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_87qn1")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TextureRect2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_87qn1")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/TextureRect2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_87qn1")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = -1200
+
+[node name="RestartButton" type="TextureButton" parent="Control/TextureRect2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_mbno3")
+texture_pressed = ExtResource("4_0x8l7")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/RestartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.385
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.0
+offset_right = 33.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart
+"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="Control/TextureRect2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("5_5hpbc")
+texture_pressed = ExtResource("6_7kq1w")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.385
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.0
+offset_right = 33.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit to main menu
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -160.0
+offset_right = 198.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_o6pko")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.924
+anchor_right = 0.5
+anchor_bottom = 0.924
+offset_left = -42.0
+offset_top = -34.68
+offset_right = 43.0
+offset_bottom = 2.32001
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "What a shame..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7a0vp")
+}

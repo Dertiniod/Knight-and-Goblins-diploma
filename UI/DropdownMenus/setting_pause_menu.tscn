@@ -1,0 +1,265 @@
+[gd_scene load_steps=12 format=3 uid="uid://bc7h8ecqcyq7v"]
+
+[ext_resource type="Texture2D" uid="uid://b7esnngfwdda1" path="res://Assets/Sprites/UI/Banners/Carved_9Slides.png" id="1_kxgew"]
+[ext_resource type="Script" path="res://UI/DropdownMenus/setting_pause_menu.gd" id="1_yj16l"]
+[ext_resource type="Theme" uid="uid://c6btk8hvifac7" path="res://Assets/theme.tres" id="2_885bl"]
+[ext_resource type="Texture2D" uid="uid://drqlurpc60rme" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides.png" id="2_nssra"]
+[ext_resource type="Texture2D" uid="uid://brg76ir3b6e7u" path="res://Assets/Sprites/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_drid6"]
+[ext_resource type="Texture2D" uid="uid://dsrqxfwwm4phk" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Red_Long.png" id="6_ein7e"]
+
+[sub_resource type="Animation" id="Animation_htmel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(274, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_y2rqh"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, -700), Vector2(274, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ftg33"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, 0), Vector2(274, -700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.6), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7nmfx"]
+resource_name = "menu_change"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(274, 0), Vector2(274, -700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7a0vp"]
+_data = {
+"RESET": SubResource("Animation_htmel"),
+"appear": SubResource("Animation_y2rqh"),
+"disappear": SubResource("Animation_ftg33"),
+"menu_change": SubResource("Animation_7nmfx")
+}
+
+[node name="SettingPauseMenu" type="CanvasLayer" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_yj16l")
+type = 1
+anim_player = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Control" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 274.0
+offset_right = 274.0
+offset_bottom = 272.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_right = 147.0
+offset_bottom = 313.0
+grow_horizontal = 2
+texture = ExtResource("1_kxgew")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+offset_left = -95.6
+offset_top = 36.0
+offset_right = 96.6
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="Control/TextureRect2/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_885bl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="Control/TextureRect2/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_885bl")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Music
+"
+
+[node name="HSlider" type="HSlider" parent="Control/TextureRect2/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_885bl")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control/TextureRect2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ReturnToMenuButton" type="TextureButton" parent="Control/TextureRect2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_nssra")
+texture_pressed = ExtResource("3_drid6")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Control/TextureRect2/VBoxContainer/ReturnToMenuButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.385
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.0
+offset_right = 33.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to menu"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -160.0
+offset_right = 198.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ein7e")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.924
+anchor_right = 0.5
+anchor_bottom = 0.924
+offset_left = -42.0
+offset_top = -34.68
+offset_right = 43.0
+offset_bottom = 2.32001
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "Settings"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7a0vp")
+}
+autoplay = "appear"

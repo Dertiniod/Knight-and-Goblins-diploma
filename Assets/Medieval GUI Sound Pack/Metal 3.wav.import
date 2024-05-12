@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duehv0gdoeu0y"
+path="res://.godot/imported/Metal 3.wav-319a0528278386a6ee6fc43471e18199.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Metal 3.wav"
+dest_files=["res://.godot/imported/Metal 3.wav-319a0528278386a6ee6fc43471e18199.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

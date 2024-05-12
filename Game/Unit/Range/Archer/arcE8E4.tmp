@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://q6ehum8p4dsk"]
+
+[ext_resource type="PackedScene" uid="uid://cg2ht6nga1fv5" path="res://Game/Unit/Range/Archer/archer.tscn" id="1_4ryvs"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Archer" parent="." instance=ExtResource("1_4ryvs")]
+position = Vector2(277, 354)

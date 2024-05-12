@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl453qhd2lcv6"
+path="res://.godot/imported/Gems.wav-647fc59c795954b3083b6f45fff32997.sample"
+
+[deps]
+
+source_file="res://Assets/Medieval GUI Sound Pack/Gems.wav"
+dest_files=["res://.godot/imported/Gems.wav-647fc59c795954b3083b6f45fff32997.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

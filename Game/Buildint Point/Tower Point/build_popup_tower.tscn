@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://qjlhu5wxft5a"]
+
+[ext_resource type="PackedScene" uid="uid://bvmmm8p7fenx8" path="res://Game/Buildint Point/build_popup_parent.tscn" id="1_667vk"]
+
+[node name="BuildPopupTower" instance=ExtResource("1_667vk")]
+
+[node name="Control" parent="." index="0"]
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureRect" parent="Control/NinePatchRect/VBoxContainer/HBoxContainer" index="0"]
+size_flags_horizontal = 3

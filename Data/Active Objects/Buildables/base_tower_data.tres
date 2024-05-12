@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildableObjectsData" load_steps=3 format=3 uid="uid://fr5aa6gqejke"]
+
+[ext_resource type="Script" path="res://Data/Active Objects/Buildables/buildable_objects_data.gd" id="1_4r52c"]
+[ext_resource type="PackedScene" uid="uid://bdtqfuw77ryob" path="res://Game/Objects/Active Objects/Placable/Knight's Tower/knights_tower.tscn" id="1_5w6iy"]
+
+[resource]
+script = ExtResource("1_4r52c")
+gold = 100
+food = 5
+wood = 25
+building_time = 15.0
+name = ""
+description = ""
+object_scene = ExtResource("1_5w6iy")

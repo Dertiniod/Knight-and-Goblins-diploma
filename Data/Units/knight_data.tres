@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WarUnitData" load_steps=2 format=3 uid="uid://o5wj25s0hk5a"]
+
+[ext_resource type="Script" path="res://Data/Units/war_unit_data.gd" id="1_tau08"]
+
+[resource]
+script = ExtResource("1_tau08")
+damage = 50
+attack_speed = 2.0
+can_miss = false
+miss_chance = 0.0
+name = "knight"
+unit_team = 0
+description = ""
+health = 100
+spawn_time = 5
+gold = 50
+food = 5
+wood = 10
+scene_path = "res://Game/Unit/Melee/Knight/knight.tscn"

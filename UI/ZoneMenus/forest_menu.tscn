@@ -1,0 +1,428 @@
+[gd_scene load_steps=20 format=3 uid="uid://ck8pyx0m51axe"]
+
+[ext_resource type="Texture2D" uid="uid://cjov51uu4qfau" path="res://Assets/Sprites/UI/Banners/Banner_Connection_Up.png" id="1_lwn1a"]
+[ext_resource type="Script" path="res://UI/ZoneMenus/forest_menu.gd" id="1_pokn8"]
+[ext_resource type="Texture2D" uid="uid://bdykaj3k1tjhg" path="res://Assets/Sprites/Resources/Trees/Tree.png" id="2_otyvj"]
+[ext_resource type="Texture2D" uid="uid://bvpngnoox6eu8" path="res://Assets/Sprites/UI/Icons/Pawn_Icon.png" id="4_m2vqy"]
+[ext_resource type="Texture2D" uid="uid://bf25ow7iaob05" path="res://Assets/Sprites/UI/Icons/Disable_01.png" id="4_qoksh"]
+[ext_resource type="Texture2D" uid="uid://durddllor5nne" path="res://Assets/Sprites/UI/Banners/Carved_Long_White.png" id="5_f6hf4"]
+[ext_resource type="Texture2D" uid="uid://n8fsiukd7uun" path="res://Assets/Sprites/UI/Buttons/Button_Blue_96.png" id="6_2hcbe"]
+[ext_resource type="Texture2D" uid="uid://berlkeaoi45mk" path="res://Assets/Sprites/UI/Buttons/Button_Blue_96_pressed.png" id="7_6p74e"]
+[ext_resource type="Texture2D" uid="uid://djmehe1d2j80y" path="res://Assets/Sprites/Resources/Resources/M_Icon.png" id="11_3fxqk"]
+[ext_resource type="Texture2D" uid="uid://bt08k7oxbnx1f" path="res://Assets/Sprites/Resources/Resources/W_Icon.png" id="12_qnxr3"]
+[ext_resource type="Texture2D" uid="uid://cfjd6gtrjovbc" path="res://Assets/Sprites/Resources/Resources/G_Icon.png" id="13_utwf6"]
+[ext_resource type="Texture2D" uid="uid://bafrx3uowk4g5" path="res://Assets/Sprites/UI/Buttons/Button_Disable.png" id="15_mrr3i"]
+[ext_resource type="Texture2D" uid="uid://csjdohfkanwc2" path="res://Assets/Sprites/UI/Buttons/Button_Hover.png" id="15_p4pkf"]
+
+[sub_resource type="Animation" id="Animation_f3hms"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ForestButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(166, -133)]
+}
+
+[sub_resource type="Animation" id="Animation_ooei6"]
+resource_name = "knight_error"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/HBoxContainer/Knight Box/TimberButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.984314, 0.0431373, 0.0156863, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twtpx"]
+resource_name = "menu_appear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 980), Vector2(3, 850)]
+}
+
+[sub_resource type="Animation" id="Animation_4xa2s"]
+resource_name = "menu_disappear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 850), Vector2(3, 980)]
+}
+
+[sub_resource type="Animation" id="Animation_mkdjy"]
+resource_name = "start_game"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 980)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ForestButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(148, -100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjymr"]
+_data = {
+"RESET": SubResource("Animation_f3hms"),
+"knight_error": SubResource("Animation_ooei6"),
+"menu_appear": SubResource("Animation_twtpx"),
+"menu_disappear": SubResource("Animation_4xa2s"),
+"start_game": SubResource("Animation_mkdjy")
+}
+
+[node name="ForestMenu" type="CanvasLayer" node_paths=PackedStringArray("button_sprite", "cancel_sprite", "main_window")]
+script = ExtResource("1_pokn8")
+button_sprite = NodePath("Control/ForestButton/ForestImage")
+cancel_sprite = NodePath("Control/ForestButton/CancelIcon")
+main_window = NodePath("Control/HBoxContainer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.085
+anchor_bottom = 0.085
+offset_top = -75.0
+offset_bottom = -75.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ForestButton" type="TextureButton" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 166.0
+offset_top = -133.0
+offset_right = 286.0
+offset_bottom = -42.0
+texture_normal = ExtResource("1_lwn1a")
+ignore_texture_size = true
+stretch_mode = 3
+metadata/_edit_group_ = true
+
+[node name="ForestImage" type="TextureRect" parent="Control/ForestButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = -42.4
+offset_right = 117.0
+offset_bottom = 74.6
+metadata/_edit_group_ = true
+
+[node name="Tree01" type="TextureRect" parent="Control/ForestButton/ForestImage"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 45.7494
+offset_right = 230.0
+offset_bottom = 234.749
+rotation = -0.0121265
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_otyvj")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Tree02" type="TextureRect" parent="Control/ForestButton/ForestImage"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 50.7494
+offset_right = 221.0
+offset_bottom = 239.749
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_otyvj")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Tree03" type="TextureRect" parent="Control/ForestButton/ForestImage"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 55.7494
+offset_right = 253.0
+offset_bottom = 244.749
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_otyvj")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Tree04" type="TextureRect" parent="Control/ForestButton/ForestImage"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 54.7494
+offset_right = 237.0
+offset_bottom = 243.749
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_otyvj")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CancelIcon" type="TextureRect" parent="Control/ForestButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -46.0
+offset_right = 32.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qoksh")
+
+[node name="Background" type="Sprite2D" parent="Control"]
+position = Vector2(267, 64)
+scale = Vector2(0.862565, 0.862565)
+texture = ExtResource("5_f6hf4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = 2.00012
+offset_right = 512.0
+offset_bottom = 99.0001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Knight Box" type="HBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TimberButton" type="TextureButton" parent="Control/HBoxContainer/Knight Box"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("6_2hcbe")
+texture_pressed = ExtResource("7_6p74e")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/Knight Box/TimberButton"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 6.9999
+offset_right = 52.0
+offset_bottom = 41.9999
+scale = Vector2(1.8, 1.69749)
+texture = ExtResource("4_m2vqy")
+
+[node name="KnightLabel" type="Label" parent="Control/HBoxContainer/Knight Box/TimberButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 78.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/Knight Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "Timber
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_3fxqk")
+expand_mode = 3
+
+[node name="TimberFoodLabel" type="Label" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/HBoxContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("12_qnxr3")
+expand_mode = 3
+
+[node name="TimberWoodLabel" type="Label" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/HBoxContainer/Knight Box/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("13_utwf6")
+expand_mode = 3
+
+[node name="TimberGoldLabel" type="Label" parent="Control/HBoxContainer/Knight Box/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100"
+
+[node name="WoodProductionVBox" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="WoodLabes" type="HBoxContainer" parent="Control/HBoxContainer/WoodProductionVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="DiscriptionLabel" type="Label" parent="Control/HBoxContainer/WoodProductionVBox/WoodLabes"]
+layout_mode = 2
+text = "Wood production per minute:"
+
+[node name="WoodLabel" type="Label" parent="Control/HBoxContainer/WoodProductionVBox/WoodLabes"]
+unique_name_in_owner = true
+modulate = Color(0.741176, 0.843137, 0.388235, 1)
+layout_mode = 2
+text = "15"
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/WoodProductionVBox/WoodLabes"]
+layout_mode = 2
+texture = ExtResource("12_qnxr3")
+expand_mode = 3
+
+[node name="TimberSlots" type="HBoxContainer" parent="Control/HBoxContainer/WoodProductionVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Slot_0" type="TextureButton" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("15_p4pkf")
+texture_disabled = ExtResource("15_mrr3i")
+
+[node name="TimberTexture" type="TextureRect" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots/Slot_0"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.99989
+offset_right = 52.0
+offset_bottom = 47.9999
+texture = ExtResource("4_m2vqy")
+
+[node name="Slot_1" type="TextureButton" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("15_p4pkf")
+texture_disabled = ExtResource("15_mrr3i")
+
+[node name="TimberTexture" type="TextureRect" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots/Slot_1"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.99989
+offset_right = 52.0
+offset_bottom = 47.9999
+texture = ExtResource("4_m2vqy")
+
+[node name="Slot_2" type="TextureButton" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("15_p4pkf")
+texture_disabled = ExtResource("15_mrr3i")
+
+[node name="TimberTexture" type="TextureRect" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots/Slot_2"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.99989
+offset_right = 52.0
+offset_bottom = 47.9999
+texture = ExtResource("4_m2vqy")
+
+[node name="Slot_3" type="TextureButton" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("15_p4pkf")
+texture_disabled = ExtResource("15_mrr3i")
+
+[node name="TimberTexture" type="TextureRect" parent="Control/HBoxContainer/WoodProductionVBox/TimberSlots/Slot_3"]
+visible = false
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.99989
+offset_right = 52.0
+offset_bottom = 47.9999
+texture = ExtResource("4_m2vqy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fjymr")
+}
+autoplay = "start_game"

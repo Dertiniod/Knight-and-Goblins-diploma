@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://sjbacyfk77ms"]
+
+[ext_resource type="Texture2D" uid="uid://rqbub2sab8kn" path="res://Assets/Sprites/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="1_b8xdv"]
+[ext_resource type="Script" path="res://Game/Items/arrow.gd" id="1_vxpns"]
+[ext_resource type="PackedScene" uid="uid://tg83nha0hcq0" path="res://Components/Hitbox Component/hitbox.tscn" id="3_a36et"]
+[ext_resource type="Texture2D" uid="uid://lqr151bbj5h8" path="res://Assets/Sprites/Effects/Smoke_test.png" id="3_f555f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7h2l"]
+size = Vector2(4.125, 3.5)
+
+[sub_resource type="Gradient" id="Gradient_8a51u"]
+colors = PackedColorArray(0.941925, 0.827589, 0.626645, 1, 1, 1, 1, 0)
+
+[node name="Arrow" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-31, 0)
+script = ExtResource("1_vxpns")
+
+[node name="Full Arrow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_b8xdv")
+region_enabled = true
+region_rect = Rect2(1, 28, 63, 14)
+
+[node name="Broken Arrow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-24, -1)
+texture = ExtResource("1_b8xdv")
+region_enabled = true
+region_rect = Rect2(1.4119, 88.694, 50.3437, 18.1619)
+
+[node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_a36et")]
+collision_layer = 8
+collision_mask = 0
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(25, 0)
+shape = SubResource("RectangleShape2D_n7h2l")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_f555f")
+gravity = Vector2(0, 0)
+initial_velocity_min = 47.62
+initial_velocity_max = 128.57
+angular_velocity_min = -226.29
+angular_velocity_max = 260.57
+linear_accel_min = -34.29
+linear_accel_max = 26.67
+damping_min = 7.619
+damping_max = 24.286
+angle_min = -260.6
+angle_max = 281.1
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_8a51u")
+
+[node name="Delete Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

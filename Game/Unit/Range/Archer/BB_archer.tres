@@ -1,0 +1,27 @@
+[gd_resource type="BlackboardPlan" format=3 uid="uid://dug87wj6yuhry"]
+
+[resource]
+var/is_enemy_in_spot_range/name = "is_enemy_in_spot_range"
+var/is_enemy_in_spot_range/type = 1
+var/is_enemy_in_spot_range/value = false
+var/is_enemy_in_spot_range/hint = 0
+var/is_enemy_in_spot_range/hint_string = ""
+var/is_hp_low/name = "is_hp_low"
+var/is_hp_low/type = 1
+var/is_hp_low/value = false
+var/is_hp_low/hint = 0
+var/is_hp_low/hint_string = ""
+var/retreat_position/name = "retreat_position"
+var/retreat_position/type = 5
+var/retreat_position/value = Vector2(0, 0)
+var/retreat_position/hint = 0
+var/retreat_position/hint_string = ""
+var/target/name = "target"
+var/target/type = 24
+var/target/hint = 0
+var/target/hint_string = ""
+var/is_retreat_finished/name = "is_retreat_finished"
+var/is_retreat_finished/type = 1
+var/is_retreat_finished/value = false
+var/is_retreat_finished/hint = 0
+var/is_retreat_finished/hint_string = ""

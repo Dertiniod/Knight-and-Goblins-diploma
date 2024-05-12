@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://limgpo8twgio"]
+
+[ext_resource type="PackedScene" uid="uid://b5dtxps6okt8g" path="res://UI/ZoneMenus/hint.tscn" id="1_3143d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lf2kh"]
+font_size = 12
+outline_size = 4
+outline_color = Color(0.0862745, 0.109804, 0.180392, 1)
+
+[node name="MovePointHint" instance=ExtResource("1_3143d")]
+
+[node name="Label" parent="Control/TextureRect" index="0"]
+offset_left = -1.11199
+offset_top = 5.6
+offset_right = -0.0399933
+offset_bottom = -5.56
+text = "you can set
+a move point
+while in castle"
+label_settings = SubResource("LabelSettings_lf2kh")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://b42oy7oactua2"]
+
+[ext_resource type="Script" path="res://Data/Gameplay/wave_data.gd" id="1_7mftd"]
+[ext_resource type="Resource" uid="uid://biktcpmcj6bso" path="res://Data/Units/goblin_data.tres" id="2_wwh86"]
+
+[resource]
+script = ExtResource("1_7mftd")
+total_units = 4
+units_data = Array[Resource("res://Data/Units/units_data.gd")]([ExtResource("2_wwh86")])

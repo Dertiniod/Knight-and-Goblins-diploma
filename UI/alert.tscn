@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3yu5wvuqduy8"]
+
+[ext_resource type="Texture2D" uid="uid://dsrqxfwwm4phk" path="res://Assets/Sprites/UI/Ribbons/Ribbon_Red_Long.png" id="1_g2suo"]
+
+[sub_resource type="Animation" id="Animation_rxst8"]
+resource_name = "start_wave_alert"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -350), Vector2(0, -150), Vector2(0, -150), Vector2(0, -350)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1f1r3"]
+_data = {
+"start_wave_alert": SubResource("Animation_rxst8")
+}
+
+[node name="Alert" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -270.0
+offset_top = -96.3986
+offset_right = -230.0
+offset_bottom = -56.3986
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_right = 198.0
+offset_bottom = 160.0
+grow_horizontal = 2
+texture = ExtResource("1_g2suo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.918
+anchor_right = 0.5
+anchor_bottom = 0.967
+offset_left = -130.0
+offset_top = -40.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+text = "SomeAlertText"
+
+[node name="Label2" type="Label" parent="TextureRect/HBoxContainer"]
+layout_mode = 2
+text = "SomeAlertText"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1f1r3")
+}

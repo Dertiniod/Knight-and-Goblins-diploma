@@ -1,0 +1,14 @@
+TextureRect
+HBoxContainer
+Label
+TextureButton
+VBoxContainer
+CollisionShape2D
+ProgressBar
+CanvasLayer
+Marker2D
+CPUParticles2D
+AnimationPlayer
+Sprite2D
+SubViewport
+Node2D

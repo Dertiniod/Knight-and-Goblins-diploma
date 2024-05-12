@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://q6ehum8p4dsk"]
+
+[ext_resource type="PackedScene" uid="uid://cg2ht6nga1fv5" path="res://Game/Unit/Range/Archer/archer.tscn" id="1_4ryvs"]
+[ext_resource type="PackedScene" uid="uid://pcyq4uoie15j" path="res://Game/Level/MovePoint.tscn" id="2_plgn7"]
+[ext_resource type="PackedScene" uid="uid://cln4py0nii3vq" path="res://Game/Unit/Melee/Knight/knight.tscn" id="3_a2wdd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Archer" parent="." node_paths=PackedStringArray("goblin") instance=ExtResource("1_4ryvs")]
+position = Vector2(285, 443)
+goblin = NodePath("../Knight")
+
+[node name="MovePoint" parent="." instance=ExtResource("2_plgn7")]
+position = Vector2(35, 763)
+
+[node name="Knight" parent="." node_paths=PackedStringArray("move_point") instance=ExtResource("3_a2wdd")]
+position = Vector2(40, 49)
+move_point = NodePath("../MovePoint")

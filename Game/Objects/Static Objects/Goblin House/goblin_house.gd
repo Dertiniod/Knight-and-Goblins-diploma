@@ -1,0 +1,2 @@
+extends StaticObject
+class_name GoblinHouse

@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://uroe2fonifs3"]
+
+[ext_resource type="PackedScene" uid="uid://b7ujvueu0vgvu" path="res://Game/Unit/Melee/melee.tscn" id="1_p23p8"]
+[ext_resource type="Script" path="res://Game/Unit/Melee/Goblin/goblin.gd" id="2_d05wq"]
+[ext_resource type="Shader" path="res://Game/Unit/damage.gdshader" id="2_tvu3i"]
+[ext_resource type="AnimationLibrary" uid="uid://bpgca6thfyshp" path="res://Game/Unit/Melee/Goblin/goblin_anim.res" id="3_dgfsi"]
+[ext_resource type="Texture2D" uid="uid://cqd66xraypff6" path="res://Assets/Sprites/Factions/Goblins/Troops/Torch/Torch_Red.png" id="4_7hqq8"]
+[ext_resource type="BehaviorTree" uid="uid://cwyaly0v8a4l" path="res://Game/Unit/Melee/Goblin/BT_goblin.tres" id="5_sh8bc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqxf3"]
+radius = 266.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ijx8"]
+radius = 83.0542
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lv2g6"]
+radius = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_haac6"]
+size = Vector2(134, 156)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uihbw"]
+resource_local_to_scene = true
+shader = ExtResource("2_tvu3i")
+shader_parameter/hit_opacity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fds3"]
+radius = 33.0151
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_a02j1"]
+var/is_enemy_in_spot_range/name = "is_enemy_in_spot_range"
+var/is_enemy_in_spot_range/type = 1
+var/is_enemy_in_spot_range/value = false
+var/is_enemy_in_spot_range/hint = 0
+var/is_enemy_in_spot_range/hint_string = ""
+var/is_hp_low/name = "is_hp_low"
+var/is_hp_low/type = 1
+var/is_hp_low/value = false
+var/is_hp_low/hint = 0
+var/is_hp_low/hint_string = ""
+var/retreat_position/name = "retreat_position"
+var/retreat_position/type = 5
+var/retreat_position/value = Vector2(0, 0)
+var/retreat_position/hint = 0
+var/retreat_position/hint_string = ""
+var/target/name = "target"
+var/target/type = 24
+var/target/hint = 0
+var/target/hint_string = ""
+var/is_retreat_finished/name = "is_retreat_finished"
+var/is_retreat_finished/type = 1
+var/is_retreat_finished/value = false
+var/is_retreat_finished/hint = 0
+var/is_retreat_finished/hint_string = ""
+var/is_dead/name = "is_dead"
+var/is_dead/type = 1
+var/is_dead/value = false
+var/is_dead/hint = 0
+var/is_dead/hint_string = ""
+
+[node name="Goblin" instance=ExtResource("1_p23p8")]
+collision_layer = 4
+collision_mask = 1
+motion_mode = 0
+script = ExtResource("2_d05wq")
+ally_group_name = "goblins"
+enemy_group_name = "knights"
+
+[node name="DamageComponent" parent="." index="1"]
+damage_amount = 25.0
+
+[node name="SpotArea" parent="." index="2"]
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpotArea" index="0"]
+shape = SubResource("CircleShape2D_fqxf3")
+debug_color = Color(0.945098, 0.203922, 0.301961, 0.419608)
+
+[node name="AttackArea" parent="." index="3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_5ijx8")
+
+[node name="HitBox" parent="." index="4"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(70, 0)
+shape = SubResource("CircleShape2D_lv2g6")
+debug_color = Color(0.596078, 0.545098, 0.105882, 0.419608)
+
+[node name="HurtBox" parent="." index="5"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_haac6")
+debug_color = Color(0, 0.635294, 0.439216, 0.419608)
+
+[node name="CharacterSprite" parent="." index="7"]
+material = SubResource("ShaderMaterial_uihbw")
+position = Vector2(1, -4)
+texture = ExtResource("4_7hqq8")
+hframes = 7
+vframes = 5
+frame = 32
+
+[node name="NavigationAgent2D" parent="." index="8"]
+path_postprocessing = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="9"]
+shape = SubResource("CircleShape2D_5fds3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+libraries = {
+"": ExtResource("3_dgfsi")
+}
+
+[node name="BTPlayer" type="BTPlayer" parent="." index="11"]
+behavior_tree = ExtResource("5_sh8bc")
+blackboard_plan = SubResource("BlackboardPlan_a02j1")

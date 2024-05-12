@@ -1,0 +1,2 @@
+extends RangeUnit
+class_name GoblinTnt
